@@ -1,0 +1,32 @@
+<%= link_to("<< Back", {:controller => 'users', :action => 'index'}, :class => 'back-link btn btn-default') %>
+
+<br />
+
+<section id="edit-invoice">
+
+	<h3>Edit Invoice</h3>
+
+	<%= form_for(:invoice, :url => {:controller => 'invoices', :action => 'update', :id => @invoice.id}) do |t| %>
+		
+		<table class="table table-bordered table-condensed table-striped">
+			<tr>
+				<th>Invoice #</th>
+				<td><%= t.text_field(:invoice_number) %></td>
+			</tr>
+			<tr>
+				<th>Client</th>
+				<td><%= t.text_field(:client_id) %></td>
+			</tr>
+			<tr>
+				<th>Amount</th>
+				<td><%= t.text_field(:amount) %></td>
+			</tr>
+		</table>
+
+		<%= submit_tag("Update Invoice", :class => "btn btn-success") %>
+
+	<% end %>
+
+</section>
+
+<br />

@@ -9,11 +9,22 @@
 		<tr>
 			<th>#</th>
 			<th>Client</th>
-			<th>Date Sent</th>
-			<th>Date Due</th>
-			<th>Total</th>
+			<th>Amount</th>
 			<th>Actions</th>
 		</tr>
+		<% @invoices.each do |invoice| %>
+			<tr>
+				<td><%= invoice.invoice_number %></td>
+				<% client_this_belongs_to = Client.find_by(id: invoice.client_id) %>
+				<td><%= client_this_belongs_to.name %></td>
+				<td><%= invoice.amount %></td>
+				<td class="actions">
+					<%= link_to("Show", {:controller => "invoices", :action => "show", :id => invoice.id}, :class => "btn btn-default") %>
+					<%= link_to("Edit", {:controller => "invoices", :action => "edit", :id => invoice.id}, :class => "btn btn-default") %>
+					<%= link_to("Delete", {:controller => "invoices", :action => "delete", :id => invoice.id}, :class => "btn btn-danger") %>
+				</td>
+			</tr>
+		<% end %>
 	</table>
 
 </section>

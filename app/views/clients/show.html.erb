@@ -36,10 +36,14 @@
 	<table class="table table-bordered table-condensed table-striped">
 		<tr>
 			<th>#</th>
-			<th>Total</th>
-			<th>Date Sent</th>
-			<th>Date Due</th>
+			<th>Amount</th>
 		</tr>
+		<% @client.invoices.each do |invoice| %>
+			<tr>
+				<td><%= link_to(invoice.invoice_number, {:controller => "invoices", :action => "show", :id => invoice.id}) %></td>
+				<td><%= invoice.amount %></td>
+			</tr>
+		<% end %>
 	</table>
 	
 </section>

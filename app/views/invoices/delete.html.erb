@@ -1,0 +1,21 @@
+<%= link_to("<< Back", {:controller => 'users', :action => 'index'}, :class => 'back-link btn btn-default') %>
+
+<br />
+
+<section id="delete-invoice">
+
+	<h3>Delete Invoice</h3>
+
+	<%= form_for(:invoice, :url => {:controller => 'invoices', :action => 'destroy', :id => @invoice.id}) do |t| %>
+
+		<p>Are you sure you want to delete the invoice <b><%= @invoice.invoice_number %></b>?</p>
+
+		<br />
+
+		<%= submit_tag("Delete Invoice", :class => "btn btn-danger") %>
+
+	<% end %>
+
+</section>
+
+<br />
