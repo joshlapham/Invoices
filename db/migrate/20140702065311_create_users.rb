@@ -7,9 +7,11 @@ class CreateUsers < ActiveRecord::Migration
       t.boolean :is_admin
       t.timestamps
     end
+    add_index :users, :email, unique: true
   end
 
   def down
+    remove_index :users, :email
     drop_table :users
   end
 
