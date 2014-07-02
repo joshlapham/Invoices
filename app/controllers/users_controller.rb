@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def index
     @current_user = User.find_by(email: session[:email])
+    @clients = Client.all
   end
 
 end

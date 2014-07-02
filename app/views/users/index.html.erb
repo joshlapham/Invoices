@@ -1,1 +1,53 @@
-Welcome, <%= @current_user.email %>
+<section id="invoices">
+	<h3>Invoices</h3>
+	<%= link_to("+ Create New Invoice", {:controller => "invoices", :action => "new"}, :class => "btn btn-default") %>
+
+	<br />
+	<br />
+
+	<table class="table table-bordered table-condensed table-striped">
+		<tr>
+			<th>#</th>
+			<th>Client</th>
+			<th>Date Sent</th>
+			<th>Date Due</th>
+			<th>Total</th>
+			<th>Actions</th>
+		</tr>
+	</table>
+
+</section>
+
+<section id="clients">
+	<h3>Clients</h3>
+	<%= link_to("+ Create New Client", {:controller => "clients", :action => "new"}, :class => "btn btn-default") %>
+
+	<br />
+	<br />
+
+	<table class="table table-bordered table-condensed table-striped">
+		<tr>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Phone</th>
+			<th>Address</th>
+			<th>Company</th>
+			<th>Actions</th>
+		</tr>
+		<% @clients.each do |client| %>
+			<tr>
+				<td><%= client.name %></td>
+				<td><%= client.email %></td>
+				<td><%= client.phone %></td>
+				<td><%= client.address %></td>
+				<td><%= client.company %></td>
+				<td class="actions">
+					<%= link_to("Show", {:controller => "clients", :action => "show", :id => client.id}, :class => "btn btn-default") %>
+					<%= link_to("Edit", {:controller => "clients", :action => "edit", :id => client.id}, :class => "btn btn-default") %>
+					<%= link_to("Delete", {:controller => "clients", :action => "delete", :id => client.id}, :class => "btn btn-danger") %>
+				</td>
+			</tr>
+		<% end %>
+	</table>
+
+</section>

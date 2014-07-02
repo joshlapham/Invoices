@@ -1,0 +1,21 @@
+<%= link_to("<< Back", {:controller => 'users', :action => 'index'}, :class => 'back-link btn btn-default') %>
+
+<br />
+
+<section id="delete-client">
+
+	<h3>Delete Client</h3>
+
+	<%= form_for(:client, :url => {:controller => 'clients', :action => 'destroy', :id => @client.id}) do |t| %>
+
+		<p>Are you sure you want to delete the client <b><%= @client.name %></b>?</p>
+
+		<br />
+
+		<%= submit_tag("Delete Client", :class => "btn btn-danger") %>
+
+	<% end %>
+
+</section>
+
+<br />

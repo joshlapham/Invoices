@@ -1,0 +1,45 @@
+<section>
+	<%= link_to("<< Back", {:controller => 'users', :action => 'index'}, :class => 'back-link btn btn-default') %>
+</section>
+
+<br />
+
+<section id="client-detail">
+
+	<h3>Details</h3>
+
+	<table class="table table-bordered table-condensed table-striped">
+		<tr>
+			<th>Name</th>
+			<td><%= @client.name %></td>
+		</tr>
+		<tr>
+			<th>Company</th>
+			<td><%= @client.company %></td>
+		</tr>
+		<tr>
+			<th>Email</th>
+			<td><a href="mailto:<%= @client.email %>"><%= @client.email %></a></td>
+		</tr>
+		<tr>
+			<th>Phone</th>
+			<td><%= @client.phone %></td>
+		</tr>
+		<tr>
+			<th>Address</th>
+			<td><%= @client.address %></td>
+		</tr>
+	</table>
+
+	<h3>Invoices</h3>
+
+	<table class="table table-bordered table-condensed table-striped">
+		<tr>
+			<th>#</th>
+			<th>Total</th>
+			<th>Date Sent</th>
+			<th>Date Due</th>
+		</tr>
+	</table>
+	
+</section>

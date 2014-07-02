@@ -1,0 +1,40 @@
+<%= link_to("<< Back", {:controller => 'users', :action => 'index'}, :class => 'back-link btn btn-default') %>
+
+<br />
+
+<section id="edit-client">
+
+	<h3>Edit Client</h3>
+
+	<%= form_for(:client, :url => {:controller => 'clients', :action => 'update', :id => @client.id}) do |t| %>
+		
+		<table class="table table-bordered table-condensed table-striped">
+			<tr>
+				<th>Name</th>
+				<td><%= t.text_field(:name) %></td>
+			</tr>
+			<tr>
+				<th>Company</th>
+				<td><%= t.text_field(:company) %></td>
+			</tr>
+			<tr>
+				<th>Email</th>
+				<td><%= t.text_field(:email) %></td>
+			</tr>
+			<tr>
+				<th>Phone</th>
+				<td><%= t.text_field(:phone) %></td>
+			</tr>
+			<tr>
+				<th>Address</th>
+				<td><%= t.text_area(:address, :cols => '50', :rows => '10') %></td>
+			</tr>
+		</table>
+
+		<%= submit_tag("Update Client", :class => "btn btn-success") %>
+
+	<% end %>
+
+</section>
+
+<br />
