@@ -30,21 +30,17 @@ footer {
 	padding-bottom: 2%;
 }
 
+.welcome-current-user {
+	margin-top: 2%;
+}
+
 /* Top right hand menu buttons */
 #menu-buttons {
 	text-align: right;
 }
 
-#menu-buttons a {
-	margin-top: 10%;
-}
-
 @media screen and ( max-width: 991px ) {
 	#menu-buttons {
 		text-align: left;
-	}
-
-	#menu-buttons a {
-		margin-top: 2%;
 	}
 }

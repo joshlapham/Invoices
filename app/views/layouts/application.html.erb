@@ -16,11 +16,12 @@
 
 		<header id="header" class="row">
 			<section class="col-md-9">
-				<h1>Invoices <small>Keep your business in order, yo</small></h1>
+				<h1>Invoices</h1>
 			</section>
 
 			<section class="col-md-3" id="menu-buttons">
 				<% if session[:user_id] %>
+					<p class="welcome-current-user">Welcome, <%= current_user.email %></p>
 					<%= link_to("Logout", {:controller => "sessions", :action => "logout"}, :class => "btn btn-info") %>
 				<% end %>
 			</section>
