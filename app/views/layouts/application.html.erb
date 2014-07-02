@@ -1,14 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
+
   <title>Invoices</title>
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
 </head>
+
 <body>
 
-<%= yield %>
+	<section class="container">
+
+		<header id="header" class="row">
+			<section class="col-md-9">
+				<h1>Invoices <small>Keep your business in order, yo</small></h1>
+			</section>
+
+			<section class="col-md-3" id="menu-buttons">
+				<% if session[:user_id] %>
+					<%= link_to("Logout", {:controller => "sessions", :action => "logout"}, :class => "btn btn-info") %>
+				<% end %>
+			</section>
+		</header><!-- /header -->
+
+		<hr>
+
+		<% if !flash[:notice].blank? %>
+			<section class="alert alert-info">
+			<%= flash[:notice] %>
+			</section>
+		<% end %>
+
+		<%= yield %>
+
+		<hr>
+
+		<footer class="footer">
+			<p class="copyright">&copy; Me Inc.</p>
+		</footer>
+
+	</section><!-- /container -->
 
 </body>
 </html>

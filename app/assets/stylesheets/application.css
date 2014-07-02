@@ -24,3 +24,27 @@
        url('../assets/glyphicons-halflings-regular.ttf') format('truetype'), 
        url('../assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
+
+/* Custom */
+footer {
+	padding-bottom: 2%;
+}
+
+/* Top right hand menu buttons */
+#menu-buttons {
+	text-align: right;
+}
+
+#menu-buttons a {
+	margin-top: 10%;
+}
+
+@media screen and ( max-width: 991px ) {
+	#menu-buttons {
+		text-align: left;
+	}
+
+	#menu-buttons a {
+		margin-top: 2%;
+	}
+}
