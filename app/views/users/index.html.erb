@@ -19,7 +19,17 @@
 				<% client_this_belongs_to = Client.find_by(id: invoice.client_id) %>
 				<td><%= link_to(client_this_belongs_to.name, {:controller => "invoices", :action => "show", :id => invoice.id}) %></td>
 				<td><%= invoice.amount %></td>
-				<td><%= invoice.status.to_s.capitalize %></td>
+
+				<% if invoice.status == "draft" %>
+					<td class="invoice-status-draft">
+				<% elsif invoice.status == "sent" %>
+					<td class="invoice-status-sent">
+				<% elsif invoice.status == "paid" %>
+					<td class="invoice-status-paid">
+				<% end %>
+					<b><%= invoice.status.to_s.capitalize %></b>
+				</td>
+				
 				<td class="actions">
 					<%= link_to("Show", {:controller => "invoices", :action => "show", :id => invoice.id}, :class => "btn btn-default") %>
 					<%= link_to("Edit", {:controller => "invoices", :action => "edit", :id => invoice.id}, :class => "btn btn-default") %>

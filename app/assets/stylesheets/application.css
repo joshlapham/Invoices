@@ -26,6 +26,22 @@
 }
 
 /* Custom */
+/* 
+Invoice status colours - used on multiple views 
+*/
+.invoice-status-draft {
+	color: #5BC0DE;
+}
+
+.invoice-status-sent {
+	color: #D9534F;
+}
+
+.invoice-status-paid {
+	color: #5CB85C;
+}
+
+/* Application layout */
 footer {
 	padding-bottom: 2%;
 }

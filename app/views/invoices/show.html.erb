@@ -24,8 +24,17 @@
 		</tr>
 		<tr>
 			<th>Status</th>
-			<td><%= @invoice.status.capitalize %></td>
+			<% if @invoice.status == "draft" %>
+				<td class="invoice-status-draft">
+			<% elsif @invoice.status == "sent" %>
+				<td class="invoice-status-sent">
+			<% elsif @invoice.status == "paid" %>
+				<td class="invoice-status-paid">
+			<% end %>
+				<b><%= @invoice.status.capitalize %></b>
+			</td>
 		</tr>
+		
 	</table>
 	
 </section>
