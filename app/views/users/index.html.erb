@@ -5,41 +5,129 @@
 	<br />
 	<br />
 
-	<table class="table table-bordered table-condensed table-striped">
-		<tr>
-			<th>#</th>
-			<th>Client</th>
-			<th>Amount</th>
-			<th>Status</th>
-			<th>Actions</th>
-		</tr>
-		<% @invoices.each do |invoice| %>
-			<tr>
-				<td><%= link_to(invoice.invoice_number, {:controller => "invoices", :action => "show", :id => invoice.id}) %></td>
-				<% client_this_belongs_to = Client.find_by(id: invoice.client_id) %>
-				<td><%= link_to(client_this_belongs_to.name, {:controller => "invoices", :action => "show", :id => invoice.id}) %></td>
-				<td><%= invoice.amount %></td>
+	<h4>Sent Invoices</h4>
 
-				<% if invoice.status == "draft" %>
-					<td class="invoice-status-draft">
-				<% elsif invoice.status == "sent" %>
-					<td class="invoice-status-sent">
-				<% elsif invoice.status == "paid" %>
-					<td class="invoice-status-paid">
-				<% end %>
-					<b><%= invoice.status.to_s.capitalize %></b>
-				</td>
-				
-				<td class="actions">
-					<%= link_to("Show", {:controller => "invoices", :action => "show", :id => invoice.id}, :class => "btn btn-default") %>
-					<%= link_to("Edit", {:controller => "invoices", :action => "edit", :id => invoice.id}, :class => "btn btn-default") %>
-					<%= link_to("Delete", {:controller => "invoices", :action => "delete", :id => invoice.id}, :class => "btn btn-danger") %>
-				</td>
+	<% if @sent_invoices.empty? %>
+		No sent invoices.
+	<% else %>
+		<table class="table table-bordered table-condensed table-striped">
+			<tr>
+				<th>#</th>
+				<th>Client</th>
+				<th>Amount</th>
+				<th>Status</th>
+				<th>Actions</th>
 			</tr>
-		<% end %>
-	</table>
+			<% @sent_invoices.each do |invoice| %>
+				<tr>
+					<td><%= link_to(invoice.invoice_number, {:controller => "invoices", :action => "show", :id => invoice.id}) %></td>
+					<% client_this_belongs_to = Client.find_by(id: invoice.client_id) %>
+					<td><%= link_to(client_this_belongs_to.name, {:controller => "invoices", :action => "show", :id => invoice.id}) %></td>
+					<td><%= invoice.amount %></td>
+
+					<% if invoice.status == "draft" %>
+						<td class="invoice-status-draft">
+					<% elsif invoice.status == "sent" %>
+						<td class="invoice-status-sent">
+					<% elsif invoice.status == "paid" %>
+						<td class="invoice-status-paid">
+					<% end %>
+						<b><%= invoice.status.to_s.capitalize %></b>
+					</td>
+					
+					<td class="actions">
+						<%= link_to("Show", {:controller => "invoices", :action => "show", :id => invoice.id}, :class => "btn btn-default") %>
+						<%= link_to("Edit", {:controller => "invoices", :action => "edit", :id => invoice.id}, :class => "btn btn-default") %>
+						<%= link_to("Delete", {:controller => "invoices", :action => "delete", :id => invoice.id}, :class => "btn btn-danger") %>
+					</td>
+				</tr>
+			<% end %>
+		</table>
+	<% end %>
+
+	<h4>Paid Invoices</h4>
+
+	<% if @paid_invoices.empty? %>
+		No paid invoices.
+	<% else %>
+		<table class="table table-bordered table-condensed table-striped">
+			<tr>
+				<th>#</th>
+				<th>Client</th>
+				<th>Amount</th>
+				<th>Status</th>
+				<th>Actions</th>
+			</tr>
+			<% @paid_invoices.each do |invoice| %>
+				<tr>
+					<td><%= link_to(invoice.invoice_number, {:controller => "invoices", :action => "show", :id => invoice.id}) %></td>
+					<% client_this_belongs_to = Client.find_by(id: invoice.client_id) %>
+					<td><%= link_to(client_this_belongs_to.name, {:controller => "invoices", :action => "show", :id => invoice.id}) %></td>
+					<td><%= invoice.amount %></td>
+
+					<% if invoice.status == "draft" %>
+						<td class="invoice-status-draft">
+					<% elsif invoice.status == "sent" %>
+						<td class="invoice-status-sent">
+					<% elsif invoice.status == "paid" %>
+						<td class="invoice-status-paid">
+					<% end %>
+						<b><%= invoice.status.to_s.capitalize %></b>
+					</td>
+					
+					<td class="actions">
+						<%= link_to("Show", {:controller => "invoices", :action => "show", :id => invoice.id}, :class => "btn btn-default") %>
+						<%= link_to("Edit", {:controller => "invoices", :action => "edit", :id => invoice.id}, :class => "btn btn-default") %>
+						<%= link_to("Delete", {:controller => "invoices", :action => "delete", :id => invoice.id}, :class => "btn btn-danger") %>
+					</td>
+				</tr>
+			<% end %>
+		</table>
+	<% end %>
+
+	<h4>Draft Invoices</h4>
+
+	<% if @draft_invoices.empty? %>
+		No draft invoices.
+	<% else %>
+		<table class="table table-bordered table-condensed table-striped">
+			<tr>
+				<th>#</th>
+				<th>Client</th>
+				<th>Amount</th>
+				<th>Status</th>
+				<th>Actions</th>
+			</tr>
+			<% @draft_invoices.each do |invoice| %>
+				<tr>
+					<td><%= link_to(invoice.invoice_number, {:controller => "invoices", :action => "show", :id => invoice.id}) %></td>
+					<% client_this_belongs_to = Client.find_by(id: invoice.client_id) %>
+					<td><%= link_to(client_this_belongs_to.name, {:controller => "invoices", :action => "show", :id => invoice.id}) %></td>
+					<td><%= invoice.amount %></td>
+
+					<% if invoice.status == "draft" %>
+						<td class="invoice-status-draft">
+					<% elsif invoice.status == "sent" %>
+						<td class="invoice-status-sent">
+					<% elsif invoice.status == "paid" %>
+						<td class="invoice-status-paid">
+					<% end %>
+						<b><%= invoice.status.to_s.capitalize %></b>
+					</td>
+					
+					<td class="actions">
+						<%= link_to("Show", {:controller => "invoices", :action => "show", :id => invoice.id}, :class => "btn btn-default") %>
+						<%= link_to("Edit", {:controller => "invoices", :action => "edit", :id => invoice.id}, :class => "btn btn-default") %>
+						<%= link_to("Delete", {:controller => "invoices", :action => "delete", :id => invoice.id}, :class => "btn btn-danger") %>
+					</td>
+				</tr>
+			<% end %>
+		</table>
+	<% end %>
 
 </section>
+
+<hr>
 
 <section id="clients">
 	<h3>Clients</h3>
@@ -48,29 +136,33 @@
 	<br />
 	<br />
 
-	<table class="table table-bordered table-condensed table-striped">
-		<tr>
-			<th>Name</th>
-			<th>Email</th>
-			<th>Phone</th>
-			<th>Address</th>
-			<th>Company</th>
-			<th>Actions</th>
-		</tr>
-		<% @clients.each do |client| %>
+	<% if @clients.empty? %>
+		No clients.
+	<% else %>
+		<table class="table table-bordered table-condensed table-striped">
 			<tr>
-				<td><%= link_to(client.name, {:controller => "clients", :action => "show", :id => client.id}) %></td>
-				<td><a href="mailto:<%= client.email %>"><%= client.email %></a></td>
-				<td><%= client.phone %></td>
-				<td><%= client.address %></td>
-				<td><%= client.company %></td>
-				<td class="actions">
-					<%= link_to("Show", {:controller => "clients", :action => "show", :id => client.id}, :class => "btn btn-default") %>
-					<%= link_to("Edit", {:controller => "clients", :action => "edit", :id => client.id}, :class => "btn btn-default") %>
-					<%= link_to("Delete", {:controller => "clients", :action => "delete", :id => client.id}, :class => "btn btn-danger") %>
-				</td>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Phone</th>
+				<th>Address</th>
+				<th>Company</th>
+				<th>Actions</th>
 			</tr>
-		<% end %>
-	</table>
+			<% @clients.each do |client| %>
+				<tr>
+					<td><%= link_to(client.name, {:controller => "clients", :action => "show", :id => client.id}) %></td>
+					<td><a href="mailto:<%= client.email %>"><%= client.email %></a></td>
+					<td><%= client.phone %></td>
+					<td><%= client.address %></td>
+					<td><%= client.company %></td>
+					<td class="actions">
+						<%= link_to("Show", {:controller => "clients", :action => "show", :id => client.id}, :class => "btn btn-default") %>
+						<%= link_to("Edit", {:controller => "clients", :action => "edit", :id => client.id}, :class => "btn btn-default") %>
+						<%= link_to("Delete", {:controller => "clients", :action => "delete", :id => client.id}, :class => "btn btn-danger") %>
+					</td>
+				</tr>
+			<% end %>
+		</table>
+	<% end %>
 
 </section>
