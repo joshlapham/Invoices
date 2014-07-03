@@ -2,8 +2,6 @@
 	<%= link_to("<< Back", {:controller => 'users', :action => 'index'}, :class => 'back-link btn btn-default') %>
 </section>
 
-<br />
-
 <section id="client-detail">
 
 	<h3>Details</h3>
@@ -33,17 +31,33 @@
 
 	<h3>Invoices</h3>
 
-	<table class="table table-bordered table-condensed table-striped">
-		<tr>
-			<th>#</th>
-			<th>Amount</th>
-		</tr>
-		<% @client.invoices.each do |invoice| %>
+	<% if @client.invoices.empty? %>
+		No invoices for this client.
+	<% else %>
+		<table class="table table-bordered table-condensed table-striped">
 			<tr>
-				<td><%= link_to(invoice.invoice_number, {:controller => "invoices", :action => "show", :id => invoice.id}) %></td>
-				<td><%= invoice.amount %></td>
+				<th>#</th>
+				<th>Amount</th>
+				<th>Status</th>
 			</tr>
-		<% end %>
-	</table>
+			<% @client.invoices.each do |invoice| %>
+				<tr>
+					<td><%= link_to(invoice.invoice_number, {:controller => "invoices", :action => "show", :id => invoice.id}) %></td>
+					<td><%= invoice.amount %></td>
+
+					<% if invoice.status == "draft" %>
+						<td class="invoice-status-draft">
+					<% elsif invoice.status == "sent" %>
+						<td class="invoice-status-sent">
+					<% elsif invoice.status == "paid" %>
+						<td class="invoice-status-paid">
+					<% end %>
+						<b><%= invoice.status.capitalize %></b>
+					</td>
+
+				</tr>
+			<% end %>
+		</table>
+	<% end %>
 	
 </section>
