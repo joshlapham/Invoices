@@ -55,7 +55,7 @@ class InvoicesController < ApplicationController
   # - raises an error if title not present
   # - allows listed attribs to be mass-assigned
   def invoice_params
-    params.require(:invoice).permit(:invoice_number, :client_id, :amount)
+    params.require(:invoice).permit(:invoice_number, :client_id, :amount, :status)
   end
 
 end
