@@ -14,9 +14,9 @@
 		</tr>
 		<% @invoices.each do |invoice| %>
 			<tr>
-				<td><%= invoice.invoice_number %></td>
+				<td><%= link_to(invoice.invoice_number, {:controller => "invoices", :action => "show", :id => invoice.id}) %></td>
 				<% client_this_belongs_to = Client.find_by(id: invoice.client_id) %>
-				<td><%= client_this_belongs_to.name %></td>
+				<td><%= link_to(client_this_belongs_to.name, {:controller => "invoices", :action => "show", :id => invoice.id}) %></td>
 				<td><%= invoice.amount %></td>
 				<td class="actions">
 					<%= link_to("Show", {:controller => "invoices", :action => "show", :id => invoice.id}, :class => "btn btn-default") %>
@@ -47,8 +47,8 @@
 		</tr>
 		<% @clients.each do |client| %>
 			<tr>
-				<td><%= client.name %></td>
-				<td><%= client.email %></td>
+				<td><%= link_to(client.name, {:controller => "clients", :action => "show", :id => client.id}) %></td>
+				<td><a href="mailto:<%= client.email %>"><%= client.email %></a></td>
 				<td><%= client.phone %></td>
 				<td><%= client.address %></td>
 				<td><%= client.company %></td>

@@ -17,7 +17,7 @@
 			</tr>
 			<tr>
 				<th>Client</th>
-				<td><%= t.text_field(:client_id) %></td>
+				<td><%= t.collection_select(:client_id, Client.all, :id, :name) %></td>
 			</tr>
 			<tr>
 				<th>Amount</th>

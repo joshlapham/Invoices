@@ -24,6 +24,7 @@ class InvoicesController < ApplicationController
 
   def edit
     @invoice = Invoice.find(params[:id])
+    @clients = Client.all
   end
 
   def update
