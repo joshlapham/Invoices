@@ -6,7 +6,7 @@
 
 	<h3>Edit Invoice</h3>
 
-	<%= form_for(@invoice, :url => {:controller => 'invoices', :action => 'update', :id => @invoice.id}, :method => :PATCH) do |t| %>
+	<%= form_for(setup_invoice(@invoice), :url => {:controller => 'invoices', :action => 'update', :id => @invoice.id}, :method => :PATCH) do |t| %>
 		
 		<table class="table table-bordered table-condensed table-striped">
 			<tr>

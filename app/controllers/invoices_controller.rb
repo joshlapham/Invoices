@@ -9,7 +9,6 @@ class InvoicesController < ApplicationController
 
   def new
     @invoice = Invoice.new
-    @invoice.items.build
   end
 
   def create

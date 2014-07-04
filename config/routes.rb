@@ -2,7 +2,10 @@ Rails.application.routes.draw do
 
   root 'users#index'
 
-  resources :invoices, :clients
+  resources :invoices do
+    resources :items
+  end
+  resources :clients
 
   get '/invoices/:id/delete', :to => 'invoices#delete'
   get '/clients/:id/delete', :to => 'clients#delete'

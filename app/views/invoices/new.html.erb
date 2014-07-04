@@ -8,7 +8,7 @@
 
 	<h3>Add New Invoice</h3>
 
-	<%= form_for(@invoice, :url => {:controller => 'invoices', :action => 'create'}) do |t| %>
+	<%= form_for(setup_invoice(@invoice), :url => {:controller => 'invoices', :action => 'create'}) do |t| %>
 		
 		<table class="table table-bordered table-condensed table-striped">
 			<tr>
