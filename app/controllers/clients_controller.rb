@@ -51,7 +51,6 @@ class ClientsController < ApplicationController
 
   private
   # Note -
-  # - raises an error if title not present
   # - allows listed attribs to be mass-assigned
   def client_params
     params.require(:client).permit(:name, :email, :phone, :address, :company)

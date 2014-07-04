@@ -6,7 +6,7 @@
 
 	<h3>Delete Client</h3>
 
-	<%= form_for(:client, :url => {:controller => 'clients', :action => 'destroy', :id => @client.id}) do |t| %>
+	<%= form_for(:client, :url => {:controller => 'clients', :action => 'destroy', :id => @client.id}, :method => :delete) do |t| %>
 
 		<p>Are you sure you want to delete the client <b><%= @client.name %></b>?</p>
 

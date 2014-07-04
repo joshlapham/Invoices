@@ -36,5 +36,30 @@
 		</tr>
 		
 	</table>
+
+	<h3>Items</h3>
+
+		<% if @items.empty? %>
+			No items for this invoice.
+		<% else %>
+			<table class="table table-bordered table-condensed table-striped">
+
+				<tr>
+					<th>Description</th>
+					<th>Quantity</th>
+					<th>Unit Cost</th>
+					<th>Discount</th>
+				</tr>
+				<% @items.each do |item| %>
+					<tr>
+						<td><%= item.description %></td>
+						<td><%= item.quantity %></td>
+						<td><%= item.unit_cost %></td>
+						<td><%= item.discount %></td>
+					</tr>
+				<% end %>
+
+			</table>
+		<% end %>
 	
 </section>

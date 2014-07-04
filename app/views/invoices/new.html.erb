@@ -8,7 +8,7 @@
 
 	<h3>Add New Invoice</h3>
 
-	<%= form_for(:invoice, :url => {:controller => 'invoices', :action => 'create'}) do |t| %>
+	<%= form_for(@invoice, :url => {:controller => 'invoices', :action => 'create'}) do |t| %>
 		
 		<table class="table table-bordered table-condensed table-striped">
 			<tr>
@@ -27,6 +27,26 @@
 				<th>Status</th>
 				<td><%= t.select :status, [['Draft', 'draft'], ['Sent', 'sent'], ['Paid', 'paid']] %></td>
 			</tr>
+		</table>
+
+		<h3>Items</h3>
+
+		<table class="table table-bordered table-condensed table-striped">
+			<tr>
+				<th>Description</th>
+				<th>Quantity</th>
+				<th>Unit Cost</th>
+				<th>Discount</th>
+			</tr>
+			<%= t.fields_for :items do |item| %>
+				<tr>
+					<td><%= item.text_field :description %></td>
+					<td><%= item.text_field :quantity %></td>
+					<td><%= item.text_field :unit_cost %></td>
+					<td><%= item.text_field :discount %></td>
+				</tr>
+				<%= item.hidden_field :invoice_id %>
+			<% end %>
 		</table>
 
 		<%= submit_tag("Create Invoice", :class => "btn btn-success") %>

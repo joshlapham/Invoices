@@ -4,10 +4,12 @@ class InvoicesController < ApplicationController
 
   def show
     @invoice = Invoice.find(params[:id])
+    @items = @invoice.items
   end
 
   def new
     @invoice = Invoice.new
+    @invoice.items.build
   end
 
   def create
@@ -29,7 +31,7 @@ class InvoicesController < ApplicationController
 
   def update
     @invoice = Invoice.find(params[:id])
-    
+
     if @invoice.update_attributes(invoice_params)
       flash[:notice] = "Invoice updated successfully"
       redirect_to(:controller => 'invoices', :action => 'show', :id => @invoice.id)
@@ -52,10 +54,9 @@ class InvoicesController < ApplicationController
 
   private
   # Note -
-  # - raises an error if title not present
   # - allows listed attribs to be mass-assigned
   def invoice_params
-    params.require(:invoice).permit(:invoice_number, :client_id, :amount, :status)
+    params.require(:invoice).permit(:id, :invoice_number, :client_id, :amount, :status, items_attributes: [:id, :description, :quantity, :unit_cost, :discount, :invoice_id, :_destroy])
   end
 
 end
