@@ -22,7 +22,7 @@
 				<tr>
 					<td><%= link_to(invoice.invoice_number, {:controller => "invoices", :action => "show", :id => invoice.id}) %></td>
 					<% client_this_belongs_to = Client.find_by(id: invoice.client_id) %>
-					<td><%= link_to(client_this_belongs_to.name, {:controller => "invoices", :action => "show", :id => invoice.id}) %></td>
+					<td><%= link_to(client_this_belongs_to.name, {:controller => "clients", :action => "show", :id => client_this_belongs_to.id}) %></td>
 					<td><%= invoice.amount %></td>
 
 					<% if invoice.status == "draft" %>
@@ -62,7 +62,7 @@
 				<tr>
 					<td><%= link_to(invoice.invoice_number, {:controller => "invoices", :action => "show", :id => invoice.id}) %></td>
 					<% client_this_belongs_to = Client.find_by(id: invoice.client_id) %>
-					<td><%= link_to(client_this_belongs_to.name, {:controller => "invoices", :action => "show", :id => invoice.id}) %></td>
+					<td><%= link_to(client_this_belongs_to.name, {:controller => "clients", :action => "show", :id => client_this_belongs_to.id}) %></td>
 					<td><%= invoice.amount %></td>
 
 					<% if invoice.status == "draft" %>
@@ -102,7 +102,7 @@
 				<tr>
 					<td><%= link_to(invoice.invoice_number, {:controller => "invoices", :action => "show", :id => invoice.id}) %></td>
 					<% client_this_belongs_to = Client.find_by(id: invoice.client_id) %>
-					<td><%= link_to(client_this_belongs_to.name, {:controller => "invoices", :action => "show", :id => invoice.id}) %></td>
+					<td><%= link_to(client_this_belongs_to.name, {:controller => "clients", :action => "show", :id => client_this_belongs_to.id}) %></td>
 					<td><%= invoice.amount %></td>
 
 					<% if invoice.status == "draft" %>
