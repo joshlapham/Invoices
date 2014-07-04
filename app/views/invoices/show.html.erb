@@ -1,8 +1,7 @@
 <section>
 	<%= link_to("<< Back", {:controller => 'users', :action => 'index'}, :class => 'back-link btn btn-default') %>
+	<%= link_to("Edit Invoice", {:controller => 'invoices', :action => 'edit', :id => @invoice.id}, :class => 'btn btn-default') %>
 </section>
-
-<br />
 
 <section id="invoice-detail">
 
