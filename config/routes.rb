@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get 'login', :to => 'sessions#login'
   get 'logout', :to => 'sessions#logout'
 
+  match 'attempt_login' => 'sessions#attempt_login', via: [:get, :post]
+
   # NOTE: this should be last, and taken out in production
   #match ':controller(/:action(/:id))', :via => [:get, :post]
 
