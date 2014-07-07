@@ -18,6 +18,14 @@
 				<td><%= t.collection_select(:client_id, Client.all, :id, :name) %></td>
 			</tr>
 			<tr>
+				<th>Invoice Date</th>
+				<td><%= t.text_field(:date_sent) %></td>
+			</tr>
+			<tr>
+				<th>Due Date</th>
+				<td><%= t.text_field(:date_due) %></td>
+			</tr>
+			<tr>
 				<th>Amount</th>
 				<td><%= t.text_field(:amount) %></td>
 			</tr>

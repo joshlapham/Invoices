@@ -5,6 +5,21 @@ class InvoicesController < ApplicationController
   def show
     @invoice = Invoice.find(params[:id])
     @items = @invoice.items
+
+    respond_to do |format|
+      format.pdf do
+        render :pdf    => "Invoice #{@invoice.invoice_number}",
+          :disposition => "inline",
+          :template    => "invoices/show.pdf.erb",
+          :show_as_html => params[:debug].present?,
+          :disable_external_links => true
+          #:layout      => "pdf_layout.html"
+      end
+
+      format.html
+
+    end
+
   end
 
   def new
@@ -55,7 +70,7 @@ class InvoicesController < ApplicationController
   # Note -
   # - allows listed attribs to be mass-assigned
   def invoice_params
-    params.require(:invoice).permit(:id, :invoice_number, :client_id, :amount, :status, items_attributes: [:id, :description, :quantity, :unit_cost, :discount, :invoice_id, :_destroy])
+    params.require(:invoice).permit(:id, :invoice_number, :client_id, :amount, :date_sent, :date_due, :status, items_attributes: [:id, :description, :quantity, :unit_cost, :discount, :invoice_id, :_destroy])
   end
 
 end

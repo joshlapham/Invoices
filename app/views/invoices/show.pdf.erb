@@ -1,0 +1,80 @@
+<%= wicked_pdf_stylesheet_link_tag "application" %>
+
+<% client_this_belongs_to = Client.find_by(id: @invoice.client_id) %>
+
+<section class="container">
+
+	<section class="row">
+
+		<section class="col-md-6">
+		</section>
+
+		<section class="col-md-6" id="pdf-invoice-number">
+			<h2>Tax Invoice #<%= @invoice.invoice_number %></h2>
+		</section>
+
+	</section><!-- /row -->
+
+	<section class="row">
+
+		<section class="col-md-6" id="pdf-biller-details">
+		</section>
+
+		<section class="col-md-6" id="pdf-invoice-details">
+
+			<table class="table table-bordered table-condensed">
+				<tr>
+					<th>Bill To:</th>
+					<td><%= client_this_belongs_to.name %> (<%= client_this_belongs_to.email %>)</td>
+				</tr>
+				<tr>
+					<th>Tax Invoice Date:</th>
+					<td><%= @invoice.date_sent %></td>
+				</tr>
+				<tr>
+					<th>Due Date:</th>
+					<td><%= @invoice.date_due %></td>
+				</tr>
+				<tr>
+					<th>Amount Due:</th>
+					<td><b><%= @invoice.amount %></b></td>
+				</tr>
+			</table>
+			
+		</section>
+
+	</section><!-- /row -->
+
+	<section class="row">
+
+		<section class="col-md-12" id="pdf-invoice-items">
+
+			<table class="table table-bordered table-condensed">
+
+				<tr>
+					<th>Description</th>
+					<th>Qty</th>
+					<th>Cost</th>
+				</tr>
+				<% @items.each do |item| %>
+					<tr>
+						<td><%= item.description %></td>
+						<td><%= item.quantity %></td>
+						<td><%= item.unit_cost %></td>
+					</tr>
+				<% end %>
+
+			</table>
+
+		</section>
+
+	</section><!-- /row -->
+
+	<section>
+
+		<section class="col-md-12" id="pdf-payment-options">
+		</section>
+
+	</section><!-- /row -->
+
+</section>

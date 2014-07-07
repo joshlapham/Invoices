@@ -1,6 +1,7 @@
 <section>
 	<%= link_to("<< Back", {:controller => 'users', :action => 'index'}, :class => 'back-link btn btn-default') %>
 	<%= link_to("Edit Invoice", {:controller => 'invoices', :action => 'edit', :id => @invoice.id}, :class => 'btn btn-default') %>
+	<%= link_to("PDF", {:controller => 'invoices', :action => 'show', :id => @invoice.id, :format => :pdf}, :class => 'btn btn-default') %>
 </section>
 
 <section id="invoice-detail">
@@ -16,6 +17,14 @@
 			<th>Client</th>
 			<% client_this_belongs_to = Client.find_by(id: @invoice.client_id) %>
 			<td><%= link_to(client_this_belongs_to.name, {:controller => "clients", :action => "show", :id => client_this_belongs_to.id}) %></td>
+		</tr>
+		<tr>
+			<th>Invoice Date</th>
+			<td><%= @invoice.date_sent %></td>
+		</tr>
+		<tr>
+			<th>Due Date</th>
+			<td><%= @invoice.date_due %></td>
 		</tr>
 		<tr>
 			<th>Amount</th>
