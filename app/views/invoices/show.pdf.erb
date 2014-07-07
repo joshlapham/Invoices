@@ -22,7 +22,7 @@
 
 		<section class="col-md-6" id="pdf-invoice-details">
 
-			<table class="table table-bordered table-condensed">
+			<table class="table table-condensed pdf-invoice-details-table">
 				<tr>
 					<th>Bill To:</th>
 					<td><%= client_this_belongs_to.name %> (<%= client_this_belongs_to.email %>)</td>
@@ -49,20 +49,32 @@
 
 		<section class="col-md-12" id="pdf-invoice-items">
 
-			<table class="table table-bordered table-condensed">
+			<table class="table table-condensed">
 
 				<tr>
 					<th>Description</th>
-					<th>Qty</th>
-					<th>Cost</th>
+					<th class="pdf-invoice-details-table">Qty</th>
+					<th class="pdf-invoice-details-table">Cost</th>
 				</tr>
 				<% @items.each do |item| %>
 					<tr>
 						<td><%= item.description %></td>
-						<td><%= item.quantity %></td>
-						<td><%= item.unit_cost %></td>
+						<td class="pdf-invoice-details-table"><%= item.quantity %></td>
+						<td class="pdf-invoice-details-table"><%= item.unit_cost %></td>
 					</tr>
 				<% end %>
+
+				<tr>
+					<th>&nbsp;</th>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+
+				<tr>
+					<th>Total:</th>
+					<td></td>
+					<td class="pdf-invoice-details-table"><b><%= @invoice.amount %></b></td>
+				</tr>
 
 			</table>
 
