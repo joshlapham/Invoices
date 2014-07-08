@@ -6,7 +6,7 @@
 
 	<h3>Edit Client</h3>
 
-	<%= form_for(:client, :url => {:controller => 'clients', :action => 'update', :id => @client.id}) do |t| %>
+	<%= form_for(@client, :url => {:controller => 'clients', :action => 'update', :id => @client.id}) do |t| %>
 		
 		<table class="table table-bordered table-condensed table-striped">
 			<tr>

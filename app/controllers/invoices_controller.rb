@@ -3,7 +3,8 @@ class InvoicesController < ApplicationController
   before_action :confirm_logged_in, :except => [:login, :attempt_login, :logout]
 
   def show
-    @invoice = Invoice.find(params[:id])
+    # TODO - limit invoice search to current_user
+    @invoice = Invoice.find_by(id: params[:id])
     @items = @invoice.items
 
     respond_to do |format|
@@ -39,12 +40,12 @@ class InvoicesController < ApplicationController
   end
 
   def edit
-    @invoice = Invoice.find(params[:id])
+    @invoice = Invoice.find_by(id: params[:id])
     @clients = Client.all
   end
 
   def update
-    @invoice = Invoice.find(params[:id])
+    @invoice = Invoice.find_by(id: params[:id])
 
     if @invoice.update_attributes(invoice_params)
       flash[:notice] = "Invoice updated successfully"
@@ -56,11 +57,11 @@ class InvoicesController < ApplicationController
   end
 
   def delete
-    @invoice = Invoice.find(params[:id])
+    @invoice = Invoice.find_by(id: params[:id])
   end
 
   def destroy
-    invoice = Invoice.find(params[:id])
+    invoice = Invoice.find_by(id: params[:id])
     invoice.destroy
     flash[:notice] = "Invoice '#{invoice.invoice_number}' deleted"
     redirect_to(:controller => 'users', :action => 'index')

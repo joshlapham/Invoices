@@ -5,6 +5,10 @@
 	<br />
 	<br />
 
+	<% if @sent_invoices.empty? && @paid_invoices.empty? && @draft_invoices.empty? %>
+		No invoices.
+	<% else %>
+
 	<h4>Sent Invoices</h4>
 
 	<% if @sent_invoices.empty? %>
@@ -123,6 +127,9 @@
 				</tr>
 			<% end %>
 		</table>
+		
+	<% end %>
+
 	<% end %>
 
 </section>

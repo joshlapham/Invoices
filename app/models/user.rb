@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 
   has_many :clients
+  accepts_nested_attributes_for :clients
 
   before_save { self.email = email.downcase }
 

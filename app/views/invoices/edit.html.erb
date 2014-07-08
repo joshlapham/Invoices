@@ -15,7 +15,7 @@
 			</tr>
 			<tr>
 				<th>Client</th>
-				<td><%= t.collection_select(:client_id, Client.all, :id, :name) %></td>
+				<td><%= t.collection_select(:client_id, current_user.clients, :id, :name) %></td>
 			</tr>
 			<tr>
 				<th>Invoice Date</th>
