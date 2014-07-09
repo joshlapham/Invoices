@@ -1,12 +1,16 @@
 <section id="invoices">
 	<h3>Invoices</h3>
-	<%= link_to("+ Create New Invoice", {:controller => "invoices", :action => "new"}, :class => "btn btn-default") %>
+	<% if @clients.empty? %>
+		<%= link_to("+ Create New Invoice", {:controller => "invoices", :action => "new"}, :class => "btn btn-default disabled") %>
+	<% else %>
+		<%= link_to("+ Create New Invoice", {:controller => "invoices", :action => "new"}, :class => "btn btn-default") %>
+	<% end %>
 
 	<br />
 	<br />
 
 	<% if @sent_invoices.empty? && @paid_invoices.empty? && @draft_invoices.empty? %>
-		No invoices.
+		No invoices. <% if @clients.empty? %>Get started by <%= link_to("creating a client", {:controller => "clients", :action => "new"}) %>.<% end %>
 	<% else %>
 
 	<% if !@sent_invoices.empty? %>
