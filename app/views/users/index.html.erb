@@ -9,11 +9,10 @@
 		No invoices.
 	<% else %>
 
-	<h4>Sent Invoices</h4>
+	<% if !@sent_invoices.empty? %>
 
-	<% if @sent_invoices.empty? %>
-		No sent invoices.
-	<% else %>
+		<h4>Sent Invoices</h4>
+
 		<table class="table table-bordered table-condensed table-striped">
 			<tr>
 				<th>#</th>
@@ -49,11 +48,10 @@
 		</table>
 	<% end %>
 
-	<h4>Paid Invoices</h4>
+	<% if !@paid_invoices.empty? %>
 
-	<% if @paid_invoices.empty? %>
-		No paid invoices.
-	<% else %>
+		<h4>Paid Invoices</h4>
+
 		<table class="table table-bordered table-condensed table-striped">
 			<tr>
 				<th>#</th>
@@ -89,11 +87,10 @@
 		</table>
 	<% end %>
 
-	<h4>Draft Invoices</h4>
+	<% if !@draft_invoices.empty? %>
 
-	<% if @draft_invoices.empty? %>
-		No draft invoices.
-	<% else %>
+		<h4>Draft Invoices</h4>
+
 		<table class="table table-bordered table-condensed table-striped">
 			<tr>
 				<th>#</th>
