@@ -3,10 +3,16 @@ class UsersController < ApplicationController
   before_action :confirm_logged_in, :except => [:login, :attempt_login, :logout, :new, :create]
 
   def new
+    # This method is DISABLED for now
+    not_found and return
+
     @user = User.new
   end
 
   def create
+    # This method is DISABLED for now
+    not_found and return
+
     @user = User.new(user_params)
     @user.ip_address = ip_address
 

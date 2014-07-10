@@ -23,6 +23,10 @@ class ApplicationController < ActionController::Base
 
   helper_method :ip_address
 
+  def not_found
+    render(:file => "#{Rails.root.to_s}/public/404.html", :layout => false, :status => 404)
+  end
+
   private
 
   def confirm_logged_in
