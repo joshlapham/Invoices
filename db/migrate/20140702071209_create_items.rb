@@ -3,9 +3,9 @@ class CreateItems < ActiveRecord::Migration
   def up
     create_table :items do |t|
       t.string :description
-      t.string :unit_cost
-      t.string :quantity
-      t.string :discount
+      t.integer :unit_cost
+      t.integer :quantity
+      t.integer :discount, :default => "0"
       t.integer :invoice_id
       t.timestamps
     end

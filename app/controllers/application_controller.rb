@@ -15,6 +15,14 @@ class ApplicationController < ActionController::Base
   # Make this method available in views
   helper_method :current_user
 
+  protected
+
+  def ip_address
+    return request.remote_ip
+  end
+
+  helper_method :ip_address
+
   private
 
   def confirm_logged_in

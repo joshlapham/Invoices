@@ -28,7 +28,7 @@
 		</tr>
 		<tr>
 			<th>Amount Due</th>
-			<td><%= @invoice.amount %></td>
+			<td><%= number_to_currency(@invoice.amount) %></td>
 		</tr>
 		<tr>
 			<th>Status</th>
@@ -56,14 +56,16 @@
 					<th>Description</th>
 					<th>Quantity</th>
 					<th>Unit Cost</th>
-					<th>Discount</th>
+					<th>Discount %</th>
+					<th>Total</th>
 				</tr>
 				<% @items.each do |item| %>
 					<tr>
 						<td><%= item.description %></td>
 						<td><%= item.quantity %></td>
-						<td><%= item.unit_cost %></td>
+						<td><%= number_to_currency(item.unit_cost) %></td>
 						<td><%= item.discount %></td>
+						<td><%= number_to_currency(item.total_price) %></td>
 					</tr>
 				<% end %>
 

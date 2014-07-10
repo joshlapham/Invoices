@@ -1,6 +1,48 @@
 class UsersController < ApplicationController
 
-  before_action :confirm_logged_in, :except => [:login, :attempt_login, :logout]
+  before_action :confirm_logged_in, :except => [:login, :attempt_login, :logout, :new, :create]
+
+  def new
+    @user = User.new
+  end
+
+  def create
+    @user = User.new(user_params)
+    @user.ip_address = ip_address
+
+    if @user.save
+      flash[:notice] = "User created successfully"
+      redirect_to(:controller => 'sessions', :action => 'login')
+    else
+      render('new')
+    end
+
+  end
+
+  def edit
+    @id_param = params[:id].to_i
+    @current_user_id = current_user.id.to_i
+
+    if @current_user_id == @id_param
+      @user = User.find_by(id: params[:id])
+    else
+      flash[:notice] = "You are not authorized for that"
+      redirect_to(:controller => 'users', :action => 'index')
+    end
+
+  end
+
+  def update
+    @user = User.find_by(id: params[:id])
+
+    if @user.update_attributes(user_params)
+      flash[:notice] = "User updated successfully"
+      redirect_to(:controller => 'users', :action => 'index')
+    else
+      render('edit')
+    end
+
+  end
 
   def index
     @clients = Client.where(:user_id => current_user.id).all
@@ -27,6 +69,13 @@ class UsersController < ApplicationController
 
     end
 
+  end
+
+  private
+  # Note -
+  # - allows listed attribs to be mass-assigned
+  def user_params
+    params.require(:user).permit(:email, :password, :password_confirmation)
   end
 
 end

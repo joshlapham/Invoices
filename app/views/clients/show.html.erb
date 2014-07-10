@@ -44,7 +44,7 @@
 			<% @client.invoices.each do |invoice| %>
 				<tr>
 					<td><%= link_to(invoice.invoice_number, {:controller => "invoices", :action => "show", :id => invoice.id}) %></td>
-					<td><%= invoice.amount %></td>
+					<td><%= number_to_currency(invoice.amount) %></td>
 
 					<% if invoice.status == "draft" %>
 						<td class="invoice-status-draft">
