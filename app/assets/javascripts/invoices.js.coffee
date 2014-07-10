@@ -4,5 +4,5 @@
 
 # Datepicker for Invoices
 jQuery ->
-	$('#invoice_date_sent').datepicker()
-	$('#invoice_date_due').datepicker()
+	$('#invoice_date_sent').datepicker({ dateFormat: 'yy-mm-dd' })
+	$('#invoice_date_due').datepicker({ dateFormat: 'yy-mm-dd' })
