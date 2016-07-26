@@ -6,7 +6,7 @@ License: [Beerware](https://en.wikipedia.org/wiki/Beerware)
 
 ## What This Is
 
-[Ruby on Rails](http://rubyonrails.org/) app to manage clients and invoices. Invoices can be exported to [PDF file](https://en.wikipedia.org/wiki/Portable_Document_Format).
+[Ruby on Rails](http://rubyonrails.org/) app for managing clients and invoices. Invoices can be exported to [PDF file](https://en.wikipedia.org/wiki/Portable_Document_Format).
 
 ## Setup
 
