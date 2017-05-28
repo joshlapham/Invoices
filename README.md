@@ -19,3 +19,7 @@ __NOTE 2__ - be sure to update the value for `secret_key_base` in `config/secret
 1. Install dependencies: `bundle install`
 2. Setup database: `bundle exec rake db:migrate`
 3. Start app: `bundle exec rails server`
+
+### Troubleshooting
+
+- `libreadline` error on OS X: http://stackoverflow.com/a/40174648
