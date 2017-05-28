@@ -13,8 +13,9 @@ class InvoicesController < ApplicationController
           :disposition => "inline",
           :template    => "invoices/show.pdf.erb",
           :show_as_html => params[:debug].present?,
-          :disable_external_links => true
-          #:layout      => "pdf_layout.html"
+          :disable_external_links => true,
+          :orientation => 'Portrait',
+          :layout => "pdf_layout.html.erb"
       end
 
       format.html
