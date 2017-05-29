@@ -8,11 +8,13 @@
 }
 
 #pdf-invoice-details {
+	font-size: 3em;
 	text-align: right;
 	padding-top: 2%;
 }
 
 #pdf-invoice-items {
+	font-size: 3em;
 	padding-top: 2%;
 }
 
@@ -24,6 +26,26 @@
 #pdf-payment-options {
 	text-align: right;
 	padding-top: 2%;
+}
+
+.payment-details {
+	font-size: 3em;
+}
+
+h1 {
+	font-size: 7em;
+}
+
+h2 {
+	font-size: 6em;
+}
+
+h3 {
+	font-size: 5em;
+}
+
+h4 {
+	font-size: 4em;
 }
 
 .pdf-invoice-details-table {
