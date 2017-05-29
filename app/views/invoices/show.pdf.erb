@@ -25,22 +25,22 @@
 			<table class="table table-condensed pdf-invoice-details-table">
 				<tr>
 					<th>Bill To:</th>
-					<td><%= client_this_belongs_to.name %> (<%= client_this_belongs_to.email %>)</td>
+                                        <td><%= client_this_belongs_to.name %></td>
 				</tr>
 				<tr>
-					<th>Tax Invoice Date:</th>
+                                        <th></th>
+                                        <td><%= client_this_belongs_to.address %></td>
+                                </tr>
+                                <tr>
+                                        <th>Invoice Date:</th>
 					<td><%= @invoice.date_sent %></td>
 				</tr>
 				<tr>
 					<th>Due Date:</th>
 					<td><%= @invoice.date_due %></td>
 				</tr>
-				<tr>
-					<th>Amount Due:</th>
-					<td><b><%= number_to_currency(@invoice.amount) %></b></td>
-				</tr>
 			</table>
-			
+
 		</section>
 
 	</section><!-- /row -->
@@ -54,8 +54,8 @@
 				<tr>
 					<th>Description</th>
 					<th class="pdf-invoice-details-table">Qty</th>
-					<th class="pdf-invoice-details-table">Unit Cost</th>
-					<th class="pdf-invoice-details-table">Discount</th>
+                                        <th class="pdf-invoice-details-table">Unit Price</th>
+                                        <th class="pdf-invoice-details-table">GST</th>
 					<th class="pdf-invoice-details-table">Total</th>
 				</tr>
 				<% @items.each do |item| %>
@@ -81,7 +81,7 @@
 				</tr>
 
 				<tr>
-					<th>Total:</th>
+                                        <th>Total Amount Including GST:</th>
 					<td></td>
 					<td></td>
 					<td></td>
