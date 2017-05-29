@@ -9,16 +9,16 @@ class Invoice < ActiveRecord::Base
 
   private
 
-  # Method to calculate total of invoice items
+  # Calculate invoice total with discount and GST applied (10%)
+  # TODO: update naming for clarity
   def calculate_total
     self.amount = 0
 
     self.items.each do |item|
       unless item.marked_for_destruction?
-        self.amount += (item.quantity.to_i * item.unit_cost.to_i) * ((100 - item.discount.to_i) / 100.0)
+        self.amount += (item.quantity.to_i * item.unit_cost.to_i) * ((100 - item.discount.to_i) / 100.0) + ((item.quantity.to_i * item.unit_cost.to_i) * 0.10)
       end
     end
-
   end
 
 end
