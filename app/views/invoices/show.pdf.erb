@@ -59,17 +59,15 @@
 					<th class="pdf-invoice-details-table">Total</th>
 				</tr>
 				<% @items.each do |item| %>
-					<tr>
-						<td><%= item.description %></td>
-						<td class="pdf-invoice-details-table"><%= item.quantity %></td>
-						<td class="pdf-invoice-details-table"><%= number_to_currency(item.unit_cost) %></td>
-						<td class="pdf-invoice-details-table">
-							<% if !item.discount.nil? %>
-								<%= item.discount %>%
-							<% end %>
-						</td>
-						<td class="pdf-invoice-details-table"><%= number_to_currency(item.total_price) %></td>
-					</tr>
+                                        <% if item.quantity > 0 %>
+                                                <tr>
+                                                        <td><%= item.description %></td>
+                                                        <td class="pdf-invoice-details-table"><%= item.quantity %></td>
+                                                        <td class="pdf-invoice-details-table"><%= number_to_currency(item.unit_cost) %></td>
+                                                        <td class="pdf-invoice-details-table"><%= number_to_currency(item.calculate_gst) %></td>
+                                                        <td class="pdf-invoice-details-table"><%= number_to_currency(item.total_price + item.calculate_gst) %></td>
+                                                </tr>
+                                        <% end %>
 				<% end %>
 
 				<tr>
