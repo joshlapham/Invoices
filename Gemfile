@@ -8,6 +8,8 @@ gem 'rails', '5.2.4.3'
 
 #gem 'railties', '5.2.4.3'
 
+gem 'sprockets-rails', '2.3.3'
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '1.4.2'
 
@@ -18,7 +20,7 @@ gem 'sass-rails', '6.0.0'
 gem 'uglifier', '4.2.0'
 
 # Use CoffeeScript for .js.coffee assets and views
-#gem 'coffee-rails', '4.0.1'
+gem 'coffee-rails', '5.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
