@@ -9,13 +9,13 @@ gem 'rails', '5.2.4.3'
 #gem 'railties', '5.2.4.3'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '1.3.11'
+gem 'sqlite3', '1.4.2'
 
 # Use SCSS for stylesheets
 #gem 'sass-rails', '4.0.5'
 
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '~> 3.0.0'
+gem 'uglifier', '4.2.0'
 
 # Use CoffeeScript for .js.coffee assets and views
 #gem 'coffee-rails', '4.0.1'
@@ -34,10 +34,10 @@ gem 'uglifier', '~> 3.0.0'
 #gem 'jbuilder', '2.6.0'
 
 # bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '0.4.1',          group: :doc
+gem 'sdoc', '1.1.0',         group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring', '~> 1.7.2',       group: :development
+gem 'spring', '2.1.0',       group: :development
 
 group :development, :test do
   gem 'rspec-rails', '4.0.1'
@@ -47,12 +47,12 @@ group :development, :test do
 end
 
 group :test do
-  gem 'faker', '~> 1.6.6'
+  gem 'faker', '2.13.0'
   # gem 'capybara-webkit'
 end
 
 # Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.11'
+gem 'bcrypt', '3.1.13'
 
 # Use unicorn as the app server
 # gem 'unicorn'
