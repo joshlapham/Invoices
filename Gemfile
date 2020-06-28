@@ -24,8 +24,8 @@ gem 'uglifier', '4.2.0'
 # gem 'therubyracer',  platforms: :ruby
 
 # Use jquery as the JavaScript library
-#gem 'jquery-rails', '~> 3.1.4'
-#gem 'jquery-ui-rails', '~> 4.2.1'
+gem 'jquery-rails', '4.4.0'
+gem 'jquery-ui-rails', '6.0.1'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 #gem 'turbolinks'
