@@ -10,14 +10,14 @@ License: [Beerware](https://en.wikipedia.org/wiki/Beerware)
 
 ## Setup
 
-Tested on [Ruby](https://www.ruby-lang.org/en/) version `2.3.1`
+Tested on [Ruby](https://www.ruby-lang.org/en/) version `ruby 2.7.0p0 (2019-12-25 revision 647ee6f091) [x86_64-darwin18]`
 
 __NOTE__ - ensure [`bundler`](https://github.com/bundler/bundler) is installed - `gem install bundler`
 
 __NOTE 2__ - be sure to update the value for `secret_key_base` in `config/secrets.yml`
 
 1. Install dependencies: `bundle install`
-2. Setup database: `bundle exec rake db:migrate`
+2. (First run) Setup database: `bundle exec rake db:migrate`
 3. Start app: `bundle exec rails server`
 
 ### Troubleshooting
