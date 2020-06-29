@@ -1,7 +1,5 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
-<% client_this_belongs_to = Client.find_by(id: @invoice.client_id) %>
-
 <section class="container">
 
 	<section class="row">
@@ -18,6 +16,9 @@
 	<section class="row">
 
 		<section class="col-md-6" id="pdf-biller-details">
+			<h3>NAME HERE</h3>
+			<h4>EMAIL HERE</h4>
+			<h4>ABN: <%= @payment_details.abn_number %></h4>
 		</section>
 
 		<section class="col-md-6" id="pdf-invoice-details">
@@ -25,11 +26,11 @@
 			<table class="table table-condensed pdf-invoice-details-table">
 				<tr>
 					<th>Bill To:</th>
-                    <td><%= client_this_belongs_to.name %></td>
+                    <td><%= @client_this_belongs_to.name %></td>
 				</tr>
                 <tr>
                     <th></th>
-                    <td><%= client_this_belongs_to.address %></td>
+                    <td><%= @client_this_belongs_to.address %></td>
                 </tr>
                 <tr>
                     <th>Invoice Date:</th>
@@ -108,11 +109,13 @@
 
 	</section><!-- /row -->
 
-	<section>
-
+	<section class="row">
 		<section class="col-md-12" id="pdf-payment-options">
-		</section>
-
+			<h3>Payment Options</h3>
+			<h4>Bank Deposit</h4>
+			<span class="payment-details">BSB: <%= @payment_details.bsb_number %>
+			<br />Account #: <%= @payment_details.account_number %></span>
+		</section><!-- /col-md-12 -->
 	</section><!-- /row -->
 
 </section>
