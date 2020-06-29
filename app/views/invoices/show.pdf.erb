@@ -25,14 +25,14 @@
 			<table class="table table-condensed pdf-invoice-details-table">
 				<tr>
 					<th>Bill To:</th>
-                                        <td><%= client_this_belongs_to.name %></td>
+                    <td><%= client_this_belongs_to.name %></td>
 				</tr>
-				<tr>
-                                        <th></th>
-                                        <td><%= client_this_belongs_to.address %></td>
-                                </tr>
-                                <tr>
-                                        <th>Invoice Date:</th>
+                <tr>
+                    <th></th>
+                    <td><%= client_this_belongs_to.address %></td>
+                </tr>
+                <tr>
+                    <th>Invoice Date:</th>
 					<td><%= @invoice.date_sent %></td>
 				</tr>
 				<tr>
@@ -54,20 +54,20 @@
 				<tr>
 					<th>Description</th>
 					<th class="pdf-invoice-details-table">Qty</th>
-                                        <th class="pdf-invoice-details-table">Unit Price</th>
-                                        <th class="pdf-invoice-details-table">GST</th>
+                    <th class="pdf-invoice-details-table">Unit Price</th>
+                    <th class="pdf-invoice-details-table">GST</th>
 					<th class="pdf-invoice-details-table">Total</th>
 				</tr>
 				<% @items.each do |item| %>
-                                        <% if item.quantity > 0 %>
-                                                <tr>
-                                                        <td><%= item.description %></td>
-                                                        <td class="pdf-invoice-details-table"><%= item.quantity %></td>
-                                                        <td class="pdf-invoice-details-table"><%= number_to_currency(item.unit_cost) %></td>
-                                                        <td class="pdf-invoice-details-table"><%= number_to_currency(item.calculate_gst) %></td>
-                                                        <td class="pdf-invoice-details-table"><%= number_to_currency(item.total_price + item.calculate_gst) %></td>
-                                                </tr>
-                                        <% end %>
+                    <% if item.quantity > 0 %>
+                        <tr>
+                            <td><%= item.description %></td>
+                            <td class="pdf-invoice-details-table"><%= item.quantity %></td>
+                            <td class="pdf-invoice-details-table"><%= number_to_currency(item.unit_cost) %></td>
+                            <td class="pdf-invoice-details-table"><%= number_to_currency(item.calculate_gst) %></td>
+                            <td class="pdf-invoice-details-table"><%= number_to_currency(item.total_price + item.calculate_gst) %></td>
+                        </tr>
+                    <% end %>
 				<% end %>
 
 				<tr>
@@ -78,29 +78,29 @@
 					<td>&nbsp;</td>
 				</tr>
 
-				<tr>
-                                        <th>Subtotal</th>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td class="pdf-invoice-details-table"><b><%= number_to_currency(@invoice.calculate_subtotal) %></b></td>
-                                </tr>
+                <tr>
+                    <th>Subtotal</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="pdf-invoice-details-table"><b><%= number_to_currency(@invoice.calculate_subtotal) %></b></td>
+                </tr>
 
-                                <tr>
-                                        <th>Discount</th>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td class="pdf-invoice-details-table"><b><%= number_to_currency(@invoice.calculate_discount) %></b></td>
-                                </tr>
+                <tr>
+                    <th>Discount</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="pdf-invoice-details-table"><b><%= number_to_currency(@invoice.calculate_discount) %></b></td>
+                </tr>
 
-                                <tr>
-                                        <th>Total Amount Including GST:</th>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td class="pdf-invoice-details-table"><b><%= number_to_currency(@invoice.amount) %></b></td>
-				</tr>
+                <tr>
+                    <th>Total Amount Including GST:</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="pdf-invoice-details-table"><b><%= number_to_currency(@invoice.amount) %></b></td>
+                </tr>
 
 			</table>
 
