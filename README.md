@@ -1,4 +1,4 @@
-# Invoices
+[# Invoices
 
 By Josh Lapham [josh@joshlapham.com]
 
@@ -23,3 +23,9 @@ __NOTE 2__ - be sure to update the value for `secret_key_base` in `config/secret
 ### Troubleshooting
 
 - `libreadline` error on OS X: http://stackoverflow.com/a/40174648
+
+- `An error occurred while installing nokogiri (1.10.9), and Bundler cannot continue.`
+  - Check logfile: `/home/jl/.rvm/gems/ruby-2.7.0/extensions/x86_64-linux/2.7.0/nokogiri-1.10.9/mkmf.log`
+  - Look for line: `gcc: error: unrecognized command line option '-Wduplicated-cond'`
+  - Run: `which gcc`
+  - If path is Homebrew, then run: `brew unlink gcc`
