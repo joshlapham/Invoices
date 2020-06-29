@@ -15,4 +15,10 @@ class PaymentDetailTest < ActiveSupport::TestCase
     details = PaymentDetail.new
     assert_not details.save, "Saved PaymentDetail without 'abn_number'"
   end
+
+  test "should not save if 'bsb_number' is a string" do
+    details = PaymentDetail.new
+    details.bsb_number = "this should fail"
+    assert_not details.save, "Saved PaymentDetail when 'bsb_number' was a string"
+  end
 end
