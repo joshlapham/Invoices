@@ -5,8 +5,8 @@ WickedPdf.config = {
   # TODO: Use environment variables here if possible
 
   # Mac
-  :exe_path => '/usr/local/bin/wkhtmltopdf'
+  #:exe_path => '/usr/local/bin/wkhtmltopdf'
 
   # Linux
-  # :exe_path => '/usr/bin/wkhtmltopdf'
+  :exe_path => '/usr/bin/wkhtmltopdf'
 }
