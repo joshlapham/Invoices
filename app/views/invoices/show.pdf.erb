@@ -79,6 +79,22 @@
 				</tr>
 
 				<tr>
+                                        <th>Subtotal</th>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="pdf-invoice-details-table"><b><%= number_to_currency(@invoice.calculate_subtotal) %></b></td>
+                                </tr>
+
+                                <tr>
+                                        <th>Discount</th>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="pdf-invoice-details-table"><b><%= number_to_currency(@invoice.calculate_discount) %></b></td>
+                                </tr>
+
+                                <tr>
                                         <th>Total Amount Including GST:</th>
 					<td></td>
 					<td></td>
