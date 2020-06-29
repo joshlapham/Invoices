@@ -6,6 +6,8 @@ class InvoicesController < ApplicationController
     # TODO - limit invoice search to current_user
     @invoice = Invoice.find_by(id: params[:id])
     @items = @invoice.items
+    @client_this_belongs_to = Client.find_by(id: @invoice.client_id)
+    @payment_details = PaymentDetail.find_by(user_id: @client_this_belongs_to.user_id)
 
     respond_to do |format|
       format.pdf do
