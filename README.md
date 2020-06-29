@@ -12,6 +12,8 @@ License: [Beerware](https://en.wikipedia.org/wiki/Beerware)
 
 Tested on [Ruby](https://www.ruby-lang.org/en/) version `ruby 2.7.0p0 (2019-12-25 revision 647ee6f091) [x86_64-darwin18]`
 
+Tested using `bundler` version `2.1.2`
+
 __NOTE__ - ensure [`bundler`](https://github.com/bundler/bundler) is installed - `gem install bundler`
 
 __NOTE 2__ - be sure to update the value for `secret_key_base` in `config/secrets.yml`
