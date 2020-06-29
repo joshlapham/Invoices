@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :items
   end
   resources :clients
+  resources :payment_details
 
   get '/invoices/:id/delete', :to => 'invoices#delete'
   get '/clients/:id/delete', :to => 'clients#delete'
