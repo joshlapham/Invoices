@@ -1,2 +1,34 @@
-<h1>PaymentDetails#new</h1>
-<p>Find me in app/views/payment_details/new.html.erb</p>
+<% @page_title = "Add Payment Details" %>
+
+<%= link_to("<< Back", {:controller => 'users', :action => 'index'}, :class => 'back-link btn btn-default') %>
+
+<br />
+
+<section id="add-payment-details">
+
+	<h3>Add Payment Details</h3>
+
+	<%= form_for(:payment_details, :url => {:controller => 'payment_details', :action => 'create'}) do |t| %>
+		
+		<table class="table table-bordered table-condensed table-striped">
+			<tr>
+				<th>BSB Number</th>
+				<td><%= t.text_field(:bsb_number) %></td>
+			</tr>
+			<tr>
+				<th>Account Number</th>
+				<td><%= t.text_field(:account_number) %></td>
+			</tr>
+			<tr>
+				<th>ABN Number</th>
+				<td><%= t.text_field(:abn_number) %></td>
+			</tr>
+		</table>
+
+		<%= submit_tag("Create Payment Details", :class => "btn btn-success") %>
+
+	<% end %>
+
+</section>
+
+<br />
