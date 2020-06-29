@@ -7,6 +7,30 @@ class Invoice < ActiveRecord::Base
 
   accepts_nested_attributes_for :items, :reject_if => lambda { |a| a[:description].blank? }, :allow_destroy => true
 
+  def calculate_subtotal
+    subtotal = 0
+
+    self.items.each do |item|
+      unless item.marked_for_destruction?
+        subtotal += (item.quantity.to_f * item.unit_cost.to_f) + ((item.quantity.to_f * item.unit_cost.to_f) * 0.10)
+      end
+    end
+
+    return subtotal
+  end
+
+  def calculate_discount
+    discount = 0
+
+    self.items.each do |item|
+      unless item.marked_for_destruction?
+        discount += self.calculate_subtotal - self.amount
+      end
+    end
+
+    return discount
+  end
+
   private
 
   # Calculate invoice total with discount and GST applied (10%)
