@@ -37,3 +37,8 @@ TODO
   - Look for line: `gcc: error: unrecognized command line option '-Wduplicated-cond'`
   - Run: `which gcc`
   - If path is Homebrew, then run: `brew unlink gcc`
+
+- `libffi.so.7: cannot open shared object file: No such file or directory` when running `rails server` command on Linux
+  - Related to Homebrew issue when `gcc` is installed (see above): `brew unlink libffi`
+  - Uninstall gems: `gem uninstall ffi` & `gem uninstall sassc`
+  - Reinstall gems: `bundle install`
