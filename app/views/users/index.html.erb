@@ -1,9 +1,9 @@
 <section id="invoices">
 	<h3>Invoices</h3>
 	<% if @clients.empty? %>
-		<%= link_to("+ Create New Invoice", {:controller => "invoices", :action => "new"}, :class => "btn btn-default disabled") %>
+		<%= link_to("+ Create New Invoice", {:controller => "invoices", :action => "new"}, :class => "btn btn-light disabled") %>
 	<% else %>
-		<%= link_to("+ Create New Invoice", {:controller => "invoices", :action => "new"}, :class => "btn btn-default") %>
+		<%= link_to("+ Create New Invoice", {:controller => "invoices", :action => "new"}, :class => "btn btn-light") %>
 	<% end %>
 
 	<br />
@@ -43,8 +43,8 @@
 					</td>
 					
 					<td class="actions">
-						<%= link_to("Show", {:controller => "invoices", :action => "show", :id => invoice.id}, :class => "btn btn-default") %>
-						<%= link_to("Edit", {:controller => "invoices", :action => "edit", :id => invoice.id}, :class => "btn btn-default") %>
+						<%= link_to("Show", {:controller => "invoices", :action => "show", :id => invoice.id}, :class => "btn btn-light") %>
+						<%= link_to("Edit", {:controller => "invoices", :action => "edit", :id => invoice.id}, :class => "btn btn-light") %>
 						<%= link_to("Delete", {:controller => "invoices", :action => "delete", :id => invoice.id}, :class => "btn btn-danger") %>
 					</td>
 				</tr>
@@ -82,8 +82,8 @@
 					</td>
 					
 					<td class="actions">
-						<%= link_to("Show", {:controller => "invoices", :action => "show", :id => invoice.id}, :class => "btn btn-default") %>
-						<%= link_to("Edit", {:controller => "invoices", :action => "edit", :id => invoice.id}, :class => "btn btn-default") %>
+						<%= link_to("Show", {:controller => "invoices", :action => "show", :id => invoice.id}, :class => "btn btn-light") %>
+						<%= link_to("Edit", {:controller => "invoices", :action => "edit", :id => invoice.id}, :class => "btn btn-light") %>
 						<%= link_to("Delete", {:controller => "invoices", :action => "delete", :id => invoice.id}, :class => "btn btn-danger") %>
 					</td>
 				</tr>
@@ -121,8 +121,8 @@
 					</td>
 					
 					<td class="actions">
-						<%= link_to("Show", {:controller => "invoices", :action => "show", :id => invoice.id}, :class => "btn btn-default") %>
-						<%= link_to("Edit", {:controller => "invoices", :action => "edit", :id => invoice.id}, :class => "btn btn-default") %>
+						<%= link_to("Show", {:controller => "invoices", :action => "show", :id => invoice.id}, :class => "btn btn-light") %>
+						<%= link_to("Edit", {:controller => "invoices", :action => "edit", :id => invoice.id}, :class => "btn btn-light") %>
 						<%= link_to("Delete", {:controller => "invoices", :action => "delete", :id => invoice.id}, :class => "btn btn-danger") %>
 					</td>
 				</tr>
@@ -139,7 +139,7 @@
 
 <section id="clients">
 	<h3>Clients</h3>
-	<%= link_to("+ Create New Client", {:controller => "clients", :action => "new"}, :class => "btn btn-default") %>
+	<%= link_to("+ Create New Client", {:controller => "clients", :action => "new"}, :class => "btn btn-light") %>
 
 	<br />
 	<br />
@@ -164,8 +164,8 @@
 					<td><%= client.address %></td>
 					<td><%= client.company %></td>
 					<td class="actions">
-						<%= link_to("Show", {:controller => "clients", :action => "show", :id => client.id}, :class => "btn btn-default") %>
-						<%= link_to("Edit", {:controller => "clients", :action => "edit", :id => client.id}, :class => "btn btn-default") %>
+						<%= link_to("Show", {:controller => "clients", :action => "show", :id => client.id}, :class => "btn btn-light") %>
+						<%= link_to("Edit", {:controller => "clients", :action => "edit", :id => client.id}, :class => "btn btn-light") %>
 						<%= link_to("Delete", {:controller => "clients", :action => "delete", :id => client.id}, :class => "btn btn-danger") %>
 					</td>
 				</tr>
