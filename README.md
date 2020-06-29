@@ -14,12 +14,15 @@ Tested on [Ruby](https://www.ruby-lang.org/en/) version `ruby 2.7.0p0 (2019-12-2
 
 Tested using `bundler` version `2.1.2`
 
-__NOTE__ - be sure to update the value for `secret_key_base` in `config/secrets.yml`
+__NOTE__ - Be sure to update the value for `secret_key_base` in `config/secrets.yml`
 
-1. Ensure [`bundler`]((https://github.com/bundler/bundler)) is installed: `gem install bundler`
-1. Install dependencies: `bundle install`
-2. (First run) Setup database: `bundle exec rake db:migrate`
-3. Start app: `bundle exec rails server`
+1. Ensure `wkhtmltopdf` is installed on OS:
+    * Linux: `apt install wkhtmltopdf`
+    * Mac: `brew install wkhtmltopdf`
+2. Ensure [`bundler`]((https://github.com/bundler/bundler)) is installed: `gem install bundler`
+3. Install dependencies: `bundle install`
+4. (First run) Setup database: `bundle exec rake db:migrate`
+5. Start app: `bundle exec rails server`
 
 ### Troubleshooting
 
