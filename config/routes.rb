@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   get '/invoices/:id/delete', :to => 'invoices#delete'
   get '/clients/:id/delete', :to => 'clients#delete'
 
+  # TODO: [feature/payment-details] Disabling this until controller is implemented
+  # get '/payment_details/:id/delete', :to=> 'payment_details#delete'
+
   get 'login', :to => 'sessions#login'
   get 'logout', :to => 'sessions#logout'
 
