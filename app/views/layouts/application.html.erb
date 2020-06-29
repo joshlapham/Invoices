@@ -22,7 +22,13 @@
 			<section class="col-md-3" id="menu-buttons">
 				<% if session[:user_id] %>
 					<p class="welcome-current-user">Welcome, <%= current_user.email %></p>
-					<%= link_to("Payment Details", {:controller => "payment_details", :action => "new"}, :class => "btn btn-info") %>
+
+					<% if current_user.current_payment_details? %>
+						<%= link_to("Edit Payment Details", {:controller => "payment_details", :action => "edit", :id => current_user.current_payment_details?.id}, :class => "btn btn-info") %>
+					<% else %>
+						<%= link_to("Add Payment Details", {:controller => "payment_details", :action => "new"}, :class => "btn btn-info") %>
+					<% end %>
+
 					<%= link_to("Logout", {:controller => "sessions", :action => "logout"}, :class => "btn btn-info") %>
 				<% end %>
 			</section>

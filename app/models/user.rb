@@ -13,4 +13,8 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
   validates_confirmation_of :password
 
+  def current_payment_details?
+    @payment_details = PaymentDetail.find_by(user_id: self.id) || false
+  end
+
 end
