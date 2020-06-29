@@ -24,7 +24,11 @@ __NOTE__ - Be sure to update the value for `secret_key_base` in `config/secrets.
 4. (First run) Setup database: `bundle exec rake db:migrate`
 5. Start app: `bundle exec rails server`
 
-### Troubleshooting
+### Running in Production
+
+TODO
+
+## Troubleshooting
 
 - [`libreadline` error on OS X](http://stackoverflow.com/a/40174648)
 
