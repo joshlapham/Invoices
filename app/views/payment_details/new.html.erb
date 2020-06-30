@@ -11,6 +11,14 @@
 	<%= form_for(:payment_detail, :url => {:controller => 'payment_details', :action => 'create'}) do |t| %>
 		
 		<table class="table table-bordered table-condensed table-striped">
+      <tr>
+        <th>Name</th>
+        <td><%= t.text_field(:name_for_invoice) %></td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td><%= t.text_field(:email_for_invoice) %></td>
+      </tr>
 			<tr>
 				<th>BSB Number</th>
 				<td><%= t.text_field(:bsb_number) %></td>
