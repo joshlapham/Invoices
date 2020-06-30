@@ -50,6 +50,6 @@ class PaymentDetailsController < ApplicationController
   # Note -
   # - allows listed attribs to be mass-assigned
   def payment_details_params
-    params.require(:payment_detail).permit(:user_id, :bsb_number, :account_number, :abn_number)
+    params.require(:payment_detail).permit(:user_id, :bsb_number, :account_number, :abn_number, :name_for_invoice, :email_for_invoice)
   end
 end
