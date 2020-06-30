@@ -28,10 +28,14 @@
           <th>Bill To:</th>
           <td><%= @client_this_belongs_to.name %></td>
         </tr>
+
+        <% if @client_this_belongs_to.address.empty? == false %>
         <tr>
           <th></th>
           <td><%= @client_this_belongs_to.address %></td>
         </tr>
+        <% end %>
+
         <tr>
           <th>Invoice Date:</th>
           <td><%= @invoice.date_sent %></td>
