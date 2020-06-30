@@ -4,42 +4,42 @@
 
 /* For Invoice PDF output */
 #pdf-invoice-number {
-	text-align: right;
+  text-align: right;
 }
 
 #pdf-invoice-details {
-        font-size: 1.2em;
-	text-align: right;
-	padding-top: 2%;
+  font-size: 1.2em;
+  text-align: right;
+  padding-top: 2%;
 }
 
 #pdf-invoice-items {
-        font-size: 1.2em;
-	padding-top: 2%;
+  font-size: 1.2em;
+  padding-top: 2%;
 }
 
 #pdf-biller-details {
-	text-align: right;
-	padding-top: 1%;
-	// font-size: 3em;
+  text-align: right;
+  padding-top: 1%;
+  // font-size: 3em;
 }
 
 #pdf-biller-details h1 {
-        font-size: 1.5em;
+  font-size: 1.5em;
 }
 
 #pdf-biller-details h2 {
-        font-size: 1.2em;
+  font-size: 1.2em;
 }
 
 #pdf-payment-options {
-	text-align: right;
-	padding-top: 2%;
-	// font-size: 3em;
+  text-align: right;
+  padding-top: 2%;
+  // font-size: 3em;
 }
 
 .payment-details {
-        font-size: 1.5em;
+  font-size: 1.5em;
 }
 
 /*
@@ -61,5 +61,5 @@ h4 {
 */
 
 .pdf-invoice-details-table {
-	text-align: right;
+  text-align: right;
 }
