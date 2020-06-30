@@ -74,7 +74,7 @@ class InvoicesController < ApplicationController
   # Note -
   # - allows listed attribs to be mass-assigned
   def invoice_params
-    params.require(:invoice).permit(:id, :invoice_number, :client_id, :amount, :date_sent, :date_due, :status, items_attributes: [:id, :description, :quantity, :unit_cost, :discount, :invoice_id, :_destroy])
+    params.require(:invoice).permit(:id, :invoice_number, :client_id, :amount, :date_sent, :date_due, :status, :should_charge_gst, items_attributes: [:id, :description, :quantity, :unit_cost, :discount, :invoice_id, :_destroy])
   end
 
 end
