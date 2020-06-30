@@ -1,28 +1,23 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
 <section class="container">
-
   <section class="row">
-
     <section class="col-md-6">
-    </section>
+    </section><!-- /.col-md-6 -->
 
     <section class="col-md-6" id="pdf-invoice-number">
       <h2>Tax Invoice #<%= @invoice.invoice_number %></h2>
-    </section>
-
+    </section><!-- /.col-md-6 -->
   </section><!-- /row -->
 
   <section class="row">
-
     <section class="col-md-6" id="pdf-biller-details">
       <h3><%= @payment_details.name_for_invoice %></h3>
       <h4><%= @payment_details.email_for_invoice %></h4>
       <h4>ABN: <%= @payment_details.abn_number %></h4>
-    </section>
+    </section><!-- /.col-md-6 -->
 
     <section class="col-md-6" id="pdf-invoice-details">
-
       <table class="table table-condensed pdf-invoice-details-table">
         <tr>
           <th>Bill To:</th>
@@ -50,17 +45,12 @@
           <td><%= @invoice.date_due %></td>
         </tr>
       </table>
-
-    </section>
-
+    </section><!-- /.col-md-6 -->
   </section><!-- /row -->
 
   <section class="row">
-
     <section class="col-md-12" id="pdf-invoice-items">
-
       <table class="table table-condensed">
-
         <tr>
           <th>Description</th>
           <th class="pdf-invoice-details-table">Qty</th>
@@ -122,12 +112,9 @@
           <td></td>
           <td class="pdf-invoice-details-table"><b><%= number_to_currency(@invoice.calculate_subtotal(true)) %></b></td>
         </tr>
-
       </table>
-
-    </section>
-
-  </section><!-- /row -->
+    </section><!-- /.col-md-12 -->
+  </section><!-- /.row -->
 
   <section class="row">
     <section class="col-md-12" id="pdf-payment-options">
@@ -135,7 +122,6 @@
       <h4>Bank Deposit</h4>
       <span class="payment-details">BSB: <%= @payment_details.bsb_number %>
         <br />Account #: <%= @payment_details.account_number %></span>
-    </section><!-- /col-md-12 -->
-  </section><!-- /row -->
-
-</section>
+    </section><!-- /.col-md-12 -->
+  </section><!-- /.row -->
+</section><!-- /.container -->
