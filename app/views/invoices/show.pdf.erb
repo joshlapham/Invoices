@@ -2,82 +2,83 @@
 
 <section class="container">
 
-	<section class="row">
+  <section class="row">
 
-		<section class="col-md-6">
-		</section>
+    <section class="col-md-6">
+    </section>
 
-		<section class="col-md-6" id="pdf-invoice-number">
-			<h2>Tax Invoice #<%= @invoice.invoice_number %></h2>
-		</section>
+    <section class="col-md-6" id="pdf-invoice-number">
+      <h2>Tax Invoice #<%= @invoice.invoice_number %></h2>
+    </section>
 
-	</section><!-- /row -->
+  </section><!-- /row -->
 
-	<section class="row">
+  <section class="row">
 
-		<section class="col-md-6" id="pdf-biller-details">
-			<h3><%= @payment_details.name_for_invoice %></h3>
-			<h4><%= @payment_details.email_for_invoice %></h4>
-			<h4>ABN: <%= @payment_details.abn_number %></h4>
-		</section>
+    <section class="col-md-6" id="pdf-biller-details">
+      <h3><%= @payment_details.name_for_invoice %></h3>
+      <h4><%= @payment_details.email_for_invoice %></h4>
+      <h4>ABN: <%= @payment_details.abn_number %></h4>
+    </section>
 
-		<section class="col-md-6" id="pdf-invoice-details">
+    <section class="col-md-6" id="pdf-invoice-details">
 
-			<table class="table table-condensed pdf-invoice-details-table">
-				<tr>
-					<th>Bill To:</th>
-                    <td><%= @client_this_belongs_to.name %></td>
-				</tr>
-                <tr>
-                    <th></th>
-                    <td><%= @client_this_belongs_to.address %></td>
-                </tr>
-                <tr>
-                    <th>Invoice Date:</th>
-					<td><%= @invoice.date_sent %></td>
-				</tr>
-				<tr>
-					<th>Due Date:</th>
-					<td><%= @invoice.date_due %></td>
-				</tr>
-			</table>
+      <table class="table table-condensed pdf-invoice-details-table">
+        <tr>
+          <th>Bill To:</th>
+          <td><%= @client_this_belongs_to.name %></td>
+        </tr>
+        <tr>
+          <th></th>
+          <td><%= @client_this_belongs_to.address %></td>
+        </tr>
+        <tr>
+          <th>Invoice Date:</th>
+          <td><%= @invoice.date_sent %></td>
+        </tr>
+        <tr>
+          <th>Due Date:</th>
+          <td><%= @invoice.date_due %></td>
+        </tr>
+      </table>
 
-		</section>
+    </section>
 
-	</section><!-- /row -->
+  </section><!-- /row -->
 
-	<section class="row">
+  <section class="row">
 
-		<section class="col-md-12" id="pdf-invoice-items">
+    <section class="col-md-12" id="pdf-invoice-items">
 
-			<table class="table table-condensed">
+      <table class="table table-condensed">
 
-				<tr>
-					<th>Description</th>
-					<th class="pdf-invoice-details-table">Qty</th>
-                    <th class="pdf-invoice-details-table">Unit Price</th>
-                    <th class="pdf-invoice-details-table">GST</th>
-					<th class="pdf-invoice-details-table">Total</th>
-				</tr>
-				<% @items.each do |item| %>
-                    <% if item.quantity > 0 %>
-                        <tr>
-                            <td><%= item.description %></td>
-                            <td class="pdf-invoice-details-table"><%= item.quantity %></td>
-                            <td class="pdf-invoice-details-table"><%= number_to_currency(item.unit_cost) %></td>
-                            <td class="pdf-invoice-details-table"><%= number_to_currency(item.calculate_gst) %></td>
-                            <td class="pdf-invoice-details-table"><%= number_to_currency(item.total_price + item.calculate_gst) %></td>
-                        </tr>
-                    <% end %>
-				<% end %>
+        <tr>
+          <th>Description</th>
+          <th class="pdf-invoice-details-table">Qty</th>
+          <th class="pdf-invoice-details-table">Unit Price</th>
+          <th class="pdf-invoice-details-table">GST</th>
+          <th class="pdf-invoice-details-table">Total</th>
+        </tr>
 
-				<tr>
-					<th>&nbsp;</th>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-				</tr>
+        <% @items.each do |item| %>
+          <% if item.quantity > 0 %>
+            <tr>
+              <td><%= item.description %></td>
+              <td class="pdf-invoice-details-table"><%= item.quantity %></td>
+              <td class="pdf-invoice-details-table"><%= number_to_currency(item.unit_cost) %></td>
+              <td class="pdf-invoice-details-table"><%= number_to_currency(item.calculate_gst) %></td>
+              <td class="pdf-invoice-details-table"><%= number_to_currency(item.total_price + item.calculate_gst) %></td>
+            </tr>
+          <% end %>
+        <% end %>
+
+        <tr>
+          <th>&nbsp;</th>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
 
         <tr>
           <th>Subtotal</th>
@@ -96,13 +97,13 @@
         </tr>
 
         <% if @invoice.calculate_discount != 0.0 %>
-        <tr>
-          <th>Discount</th>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td class="pdf-invoice-details-table"><b><%= number_to_currency(@invoice.calculate_discount) %></b></td>
-        </tr>
+          <tr>
+            <th>Discount</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="pdf-invoice-details-table"><b><%= number_to_currency(@invoice.calculate_discount) %></b></td>
+          </tr>
         <% end %>
 
         <tr>
@@ -113,19 +114,19 @@
           <td class="pdf-invoice-details-table"><b><%= number_to_currency(@invoice.calculate_subtotal(true)) %></b></td>
         </tr>
 
-			</table>
+      </table>
 
-		</section>
+    </section>
 
-	</section><!-- /row -->
+  </section><!-- /row -->
 
-	<section class="row">
-		<section class="col-md-12" id="pdf-payment-options">
-			<h3>Payment Options</h3>
-			<h4>Bank Deposit</h4>
-			<span class="payment-details">BSB: <%= @payment_details.bsb_number %>
-			<br />Account #: <%= @payment_details.account_number %></span>
-		</section><!-- /col-md-12 -->
-	</section><!-- /row -->
+  <section class="row">
+    <section class="col-md-12" id="pdf-payment-options">
+      <h3>Payment Options</h3>
+      <h4>Bank Deposit</h4>
+      <span class="payment-details">BSB: <%= @payment_details.bsb_number %>
+        <br />Account #: <%= @payment_details.account_number %></span>
+    </section><!-- /col-md-12 -->
+  </section><!-- /row -->
 
 </section>
