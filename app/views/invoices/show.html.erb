@@ -42,6 +42,10 @@
         <b><%= @invoice.status.capitalize %></b>
         </td>
       </tr>
+      <tr>
+        <th>Should Charge GST?</th>
+        <td><%= @invoice.should_charge_gst %></td>
+      </tr>
 
     </table>
 

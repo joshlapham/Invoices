@@ -29,6 +29,10 @@
 				<th>Status</th>
 				<td><%= t.select :status, [['Draft', 'draft'], ['Sent', 'sent'], ['Paid', 'paid']] %></td>
 			</tr>
+      <tr>
+        <th>Should Charge GST?</th>
+        <td><%= t.check_box(:should_charge_gst) %></td>
+      </tr>
 		</table>
 
 		<h3>Items</h3>
