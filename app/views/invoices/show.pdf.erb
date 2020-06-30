@@ -95,13 +95,13 @@
           <td class="pdf-invoice-details-table"><b><%= number_to_currency(@invoice.calculate_gst_amount) %></b></td>
         </tr>
 
-        <% if @invoice.calculate_discount != 0.0 %>
+        <% if @invoice.calculate_discount_amount != 0.0 %>
           <tr>
             <th>Discount</th>
             <td></td>
             <td></td>
             <td></td>
-            <td class="pdf-invoice-details-table"><b><%= number_to_currency(@invoice.calculate_discount) %></b></td>
+            <td class="pdf-invoice-details-table"><b><%= number_to_currency(@invoice.calculate_discount_amount) %></b></td>
           </tr>
         <% end %>
 
