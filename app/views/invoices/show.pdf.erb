@@ -26,7 +26,12 @@
       <table class="table table-condensed pdf-invoice-details-table">
         <tr>
           <th>Bill To:</th>
-          <td><%= @client_this_belongs_to.name %></td>
+          <td><%= @client_this_belongs_to.company %></td>
+        </tr>
+
+        <tr>
+          <th></th>
+          <td><%= @client_this_belongs_to.email %></td>
         </tr>
 
         <% if @client_this_belongs_to.address.empty? == false %>
