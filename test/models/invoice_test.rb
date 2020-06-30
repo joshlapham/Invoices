@@ -18,12 +18,19 @@ class InvoiceTest < ActiveSupport::TestCase
     assert_equal 72.0, @invoice.calculate_gst_amount, "calculate_gst_amount method failed to return expected value"
   end
 
+  test "should correctly calculate total discount of an invoice based on invoice items when discount applied" do
+    @invoice = Invoice.new
+    @invoice.save
+    @invoice.items.create(description: "Test item", unit_cost: 120.0, quantity: 3.0, discount: 25.0)
+
+    assert_equal 90.0, @invoice.calculate_discount_amount, "calculate_discount_amount method failed to return expected value"
+  end
+
   test "should correctly calculate total discount of an invoice based on invoice items when no discount applied" do
     @invoice = Invoice.new
     @invoice.save
     @invoice.items.create(description: "Test item", unit_cost: 120.0, quantity: 3.0)
 
-    # TODO: [2020] This fails -- actual is `360.0`; so the invoice subtotal is being returned
     assert_equal 0, @invoice.calculate_discount_amount, "calculate_discount_amount method failed to return expected value"
   end
 end

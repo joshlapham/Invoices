@@ -41,8 +41,7 @@ class Invoice < ActiveRecord::Base
   end
 
   def calculate_discount_amount
-    # TODO: [2020] This method must be flawed -- returns a discount amount even if no discount was applied to invoice items -- WRITE A TEST!
-    discount_total = 0
+    discount_total = 0.0
 
     self.items.each do |item|
       unless item.marked_for_destruction?
@@ -50,7 +49,10 @@ class Invoice < ActiveRecord::Base
       end
     end
 
-    return discount_total
+    # TODO: [2020] need to allow for `should_calculate_gst` param -- i think?
+    invoice_subtotal = self.calculate_subtotal
+
+    return ((invoice_subtotal * discount_total) / 100.0)
   end
 
   # private
