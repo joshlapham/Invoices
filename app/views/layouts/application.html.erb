@@ -16,24 +16,26 @@
 
 <section class="container">
 
-  <header id="header" class="row">
-    <section class="col-md-9">
-      <h1>Invoices</h1>
-    </section><!-- /.col-md-9 -->
+  <header id="header">
+    <section class="row">
+      <section class="col-9">
+        <h1>Invoices</h1>
+      </section><!-- /.col-9 -->
 
-    <section class="col-md-3" id="menu-buttons">
-      <% if session[:user_id] %>
-        <p class="welcome-current-user">Welcome, <%= current_user.email %></p>
+      <section class="col-3" id="menu-buttons">
+        <% if session[:user_id] %>
+          <p class="welcome-current-user">Welcome, <%= current_user.email %></p>
 
-        <% if current_user.current_payment_details? %>
-          <%= link_to("Edit Payment Details", {:controller => "payment_details", :action => "edit", :id => current_user.current_payment_details?.id}, :class => "btn btn-light") %>
-        <% else %>
-          <%= link_to("Add Payment Details", {:controller => "payment_details", :action => "new"}, :class => "btn btn-light") %>
+          <% if current_user.current_payment_details? %>
+            <%= link_to("Edit Payment Details", {:controller => "payment_details", :action => "edit", :id => current_user.current_payment_details?.id}, :class => "btn btn-light") %>
+          <% else %>
+            <%= link_to("Add Payment Details", {:controller => "payment_details", :action => "new"}, :class => "btn btn-light") %>
+          <% end %>
+
+          <%= link_to("Logout", {:controller => "sessions", :action => "logout"}, :class => "btn btn-info") %>
         <% end %>
-
-        <%= link_to("Logout", {:controller => "sessions", :action => "logout"}, :class => "btn btn-info") %>
-      <% end %>
-    </section><!-- /.col-md-3 -->
+      </section><!-- /.col-3 -->
+    </section><!-- /.row -->
   </header><!-- /header -->
 
   <hr>
