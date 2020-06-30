@@ -92,7 +92,7 @@
           <td></td>
           <td></td>
           <td></td>
-          <td class="pdf-invoice-details-table"><b><%= number_to_currency(@invoice.calculate_subtotal(true)) %></b></td>
+          <td class="pdf-invoice-details-table"><b><%= number_to_currency(@invoice.calculate_gst_amount) %></b></td>
         </tr>
 
         <% if @invoice.calculate_discount != 0.0 %>
