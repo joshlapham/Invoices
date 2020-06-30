@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_30_000621) do
+ActiveRecord::Schema.define(version: 2020_06_30_082134) do
 
   create_table "clients", force: :cascade do |t|
     t.string "name", limit: 255
@@ -24,17 +24,8 @@ ActiveRecord::Schema.define(version: 2020_06_30_000621) do
     t.index ["user_id"], name: "index_clients_on_user_id"
   end
 
-  create_table "invoices", force: :cascade do |t|
-    t.string "invoice_number", limit: 255
-    t.float "amount"
-    t.string "date_sent", limit: 255
-    t.string "date_due", limit: 255
-    t.string "status", limit: 255
-    t.integer "client_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["client_id"], name: "index_invoices_on_client_id"
-  end
+# Could not dump table "invoices" because of following StandardError
+#   Unknown type 'bool' for column 'should_charge_gst'
 
   create_table "items", force: :cascade do |t|
     t.string "description", limit: 255
