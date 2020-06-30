@@ -1,75 +1,76 @@
-<section>
-	<%= link_to("<< Back", {:controller => 'users', :action => 'index'}, :class => 'back-link btn btn-light') %>
-	<%= link_to("Edit Invoice", {:controller => 'invoices', :action => 'edit', :id => @invoice.id}, :class => 'btn btn-light') %>
-	<%= link_to("PDF", {:controller => 'invoices', :action => 'show', :id => @invoice.id, :format => :pdf}, :class => 'btn btn-light') %>
-</section>
+<section class="row">
+  <section class="col-12" id="invoice-page-top-nav">
+    <%= link_to("<< Back", {:controller => 'users', :action => 'index'}, :class => 'back-link btn btn-light') %>
+    <%= link_to("Edit Invoice", {:controller => 'invoices', :action => 'edit', :id => @invoice.id}, :class => 'btn btn-light') %>
+    <%= link_to("PDF", {:controller => 'invoices', :action => 'show', :id => @invoice.id, :format => :pdf}, :class => 'btn btn-light') %>
+  </section><!-- /.col-12 -->
 
-<section id="invoice-detail">
+  <section id="invoice-detail" class="col-12">
+    <h3>Details</h3>
 
-	<h3>Details</h3>
+    <table class="table table-bordered table-condensed table-striped">
+      <tr>
+        <th>Invoice #</th>
+        <td><%= @invoice.invoice_number %></td>
+      </tr>
+      <tr>
+        <th>Client</th>
+        <% client_this_belongs_to = Client.find_by(id: @invoice.client_id) %>
+        <td><%= link_to(client_this_belongs_to.name, {:controller => "clients", :action => "show", :id => client_this_belongs_to.id}) %></td>
+      </tr>
+      <tr>
+        <th>Invoice Date</th>
+        <td><%= @invoice.date_sent %></td>
+      </tr>
+      <tr>
+        <th>Due Date</th>
+        <td><%= @invoice.date_due %></td>
+      </tr>
+      <tr>
+        <th>Amount Due</th>
+        <td><%= number_to_currency(@invoice.amount) %></td>
+      </tr>
+      <tr>
+        <th>Status</th>
+        <% if @invoice.status == "draft" %>
+          <td class="invoice-status-draft">
+        <% elsif @invoice.status == "sent" %>
+          <td class="invoice-status-sent">
+        <% elsif @invoice.status == "paid" %>
+          <td class="invoice-status-paid">
+        <% end %>
+        <b><%= @invoice.status.capitalize %></b>
+        </td>
+      </tr>
 
-	<table class="table table-bordered table-condensed table-striped">
-		<tr>
-			<th>Invoice #</th>
-			<td><%= @invoice.invoice_number %></td>
-		</tr>
-		<tr>
-			<th>Client</th>
-			<% client_this_belongs_to = Client.find_by(id: @invoice.client_id) %>
-			<td><%= link_to(client_this_belongs_to.name, {:controller => "clients", :action => "show", :id => client_this_belongs_to.id}) %></td>
-		</tr>
-		<tr>
-			<th>Invoice Date</th>
-			<td><%= @invoice.date_sent %></td>
-		</tr>
-		<tr>
-			<th>Due Date</th>
-			<td><%= @invoice.date_due %></td>
-		</tr>
-		<tr>
-			<th>Amount Due</th>
-			<td><%= number_to_currency(@invoice.amount) %></td>
-		</tr>
-		<tr>
-			<th>Status</th>
-			<% if @invoice.status == "draft" %>
-				<td class="invoice-status-draft">
-			<% elsif @invoice.status == "sent" %>
-				<td class="invoice-status-sent">
-			<% elsif @invoice.status == "paid" %>
-				<td class="invoice-status-paid">
-			<% end %>
-				<b><%= @invoice.status.capitalize %></b>
-			</td>
-		</tr>
-		
-	</table>
+    </table>
 
-	<h3>Items</h3>
+    <h3>Items</h3>
 
-		<% if @items.empty? %>
-			No items for this invoice.
-		<% else %>
-			<table class="table table-bordered table-condensed table-striped">
+    <% if @items.empty? %>
+      No items for this invoice.
+    <% else %>
+      <table class="table table-bordered table-condensed table-striped">
 
-				<tr>
-					<th>Description</th>
-					<th>Quantity</th>
-					<th>Unit Cost</th>
-					<th>Discount %</th>
-					<th>Total</th>
-				</tr>
-				<% @items.each do |item| %>
-					<tr>
-						<td><%= item.description %></td>
-						<td><%= item.quantity %></td>
-						<td><%= number_to_currency(item.unit_cost) %></td>
-						<td><%= item.discount %></td>
-						<td><%= number_to_currency(item.total_price) %></td>
-					</tr>
-				<% end %>
+        <tr>
+          <th>Description</th>
+          <th>Quantity</th>
+          <th>Unit Cost</th>
+          <th>Discount %</th>
+          <th>Total</th>
+        </tr>
+        <% @items.each do |item| %>
+          <tr>
+            <td><%= item.description %></td>
+            <td><%= item.quantity %></td>
+            <td><%= number_to_currency(item.unit_cost) %></td>
+            <td><%= item.discount %></td>
+            <td><%= number_to_currency(item.total_price) %></td>
+          </tr>
+        <% end %>
 
-			</table>
-		<% end %>
-	
-</section>
+      </table>
+    <% end %>
+
+  </section><!-- /.col-12 -->
+</section><!-- /.row -->
