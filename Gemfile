@@ -28,6 +28,7 @@ gem 'sdoc', '1.1.0', group: :doc
 gem 'spring', '2.1.0', group: :development
 
 group :development, :test do
+  gem 'rubocop', '0.86.0'
   gem 'rspec-rails', '4.0.1'
   gem 'wicked_pdf', '2.1.0'
 end
