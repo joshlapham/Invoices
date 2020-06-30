@@ -79,29 +79,39 @@
 					<td>&nbsp;</td>
 				</tr>
 
-                <tr>
-                    <th>Subtotal</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="pdf-invoice-details-table"><b><%= number_to_currency(@invoice.calculate_subtotal) %></b></td>
-                </tr>
+        <tr>
+          <th>Subtotal</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="pdf-invoice-details-table"><b><%= number_to_currency(@invoice.calculate_subtotal) %></b></td>
+        </tr>
 
-                <tr>
-                    <th>Discount</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="pdf-invoice-details-table"><b><%= number_to_currency(@invoice.calculate_discount) %></b></td>
-                </tr>
+        <tr>
+          <th>GST</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="pdf-invoice-details-table"><b><%= number_to_currency(@invoice.calculate_discount) %></b></td>
+        </tr>
 
-                <tr>
-                    <th>Total Amount Including GST:</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="pdf-invoice-details-table"><b><%= number_to_currency(@invoice.amount) %></b></td>
-                </tr>
+        <% if @invoice.calculate_discount != 0.0 %>
+        <tr>
+          <th>Discount</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="pdf-invoice-details-table"><b><%= number_to_currency(@invoice.calculate_discount) %></b></td>
+        </tr>
+        <% end %>
+
+        <tr>
+          <th>Total Amount Including GST:</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="pdf-invoice-details-table"><b><%= number_to_currency(@invoice.amount) %></b></td>
+        </tr>
 
 			</table>
 
