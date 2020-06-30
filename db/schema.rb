@@ -24,8 +24,18 @@ ActiveRecord::Schema.define(version: 2020_06_30_082134) do
     t.index ["user_id"], name: "index_clients_on_user_id"
   end
 
-# Could not dump table "invoices" because of following StandardError
-#   Unknown type 'bool' for column 'should_charge_gst'
+  create_table "invoices", force: :cascade do |t|
+    t.string "invoice_number", limit: 255
+    t.float "amount"
+    t.string "date_sent", limit: 255
+    t.string "date_due", limit: 255
+    t.string "status", limit: 255
+    t.integer "client_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean "should_charge_gst", default: false
+    t.index ["client_id"], name: "index_invoices_on_client_id"
+  end
 
   create_table "items", force: :cascade do |t|
     t.string "description", limit: 255
