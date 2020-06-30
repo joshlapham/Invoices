@@ -1,6 +1,8 @@
 class Invoice < ActiveRecord::Base
 
-  before_save :calculate_total
+  # TODO: [2020] Remove `:amount` property from `Invoice` class
+
+  # before_save :calculate_total
 
   belongs_to :client
   has_many :items, :dependent => :destroy
@@ -38,35 +40,32 @@ class Invoice < ActiveRecord::Base
     return total
   end
 
-  def calculate_discount
+  def calculate_discount_amount
     # TODO: [2020] This method must be flawed -- returns a discount amount even if no discount was applied to invoice items -- WRITE A TEST!
-    discount = 0
+    discount_total = 0
 
     self.items.each do |item|
       unless item.marked_for_destruction?
-
-        # TODO: [2020] This looks bad
-        discount += self.calculate_subtotal - self.amount
-
+        discount_total += item.discount
       end
     end
 
-    return discount
+    return discount_total
   end
 
-  private
-
-  # Calculate invoice total with discount and GST applied (10%)
-  # TODO: update naming for clarity
-  # TODO: [2020] When is this called? Why is it private?
-  def calculate_total
-    self.amount = 0
-
-    self.items.each do |item|
-      unless item.marked_for_destruction?
-        self.amount += (item.quantity.to_f * item.unit_cost.to_f) * ((100 - item.discount.to_f) / 100.0) + ((item.quantity.to_f * item.unit_cost.to_f) * 0.10)
-      end
-    end
-  end
+  # private
+  #
+  # # Calculate invoice total with discount and GST applied (10%)
+  # # TODO: update naming for clarity
+  # # TODO: [2020] When is this called? Why is it private?
+  # def calculate_total
+  #   self.amount = 0
+  #
+  #   self.items.each do |item|
+  #     unless item.marked_for_destruction?
+  #       self.amount += (item.quantity.to_f * item.unit_cost.to_f) * ((100 - item.discount.to_f) / 100.0) + ((item.quantity.to_f * item.unit_cost.to_f) * 0.10)
+  #     end
+  #   end
+  # end
 
 end
