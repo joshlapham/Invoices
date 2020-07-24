@@ -9,29 +9,8 @@
 	<h3>Add New Client</h3>
 
 	<%= form_for(:client, :url => {:controller => 'clients', :action => 'create'}) do |t| %>
-		
-		<table class="table table-bordered table-condensed table-striped">
-			<tr>
-				<th>Name</th>
-				<td><%= t.text_field(:name) %></td>
-			</tr>
-			<tr>
-				<th>Company</th>
-				<td><%= t.text_field(:company) %></td>
-			</tr>
-			<tr>
-				<th>Email</th>
-				<td><%= t.text_field(:email) %></td>
-			</tr>
-			<tr>
-				<th>Phone</th>
-				<td><%= t.text_field(:phone) %></td>
-			</tr>
-			<tr>
-				<th>Address</th>
-				<td><%= t.text_area(:address, :cols => '50', :rows => '10') %></td>
-			</tr>
-		</table>
+
+    <%= render "form", t: t %>
 
 		<%= submit_tag("Create Client", :class => "btn btn-success") %>
 

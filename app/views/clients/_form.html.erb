@@ -1,0 +1,22 @@
+<table class="table table-bordered table-condensed table-striped">
+  <tr>
+    <th>Name</th>
+    <td><%= t.text_field(:name) %></td>
+  </tr>
+  <tr>
+    <th>Company</th>
+    <td><%= t.text_field(:company) %></td>
+  </tr>
+  <tr>
+    <th>Email</th>
+    <td><%= t.text_field(:email) %></td>
+  </tr>
+  <tr>
+    <th>Phone</th>
+    <td><%= t.text_field(:phone) %></td>
+  </tr>
+  <tr>
+    <th>Address</th>
+    <td><%= t.text_area(:address, :cols => '50', :rows => '10') %></td>
+  </tr>
+</table>
