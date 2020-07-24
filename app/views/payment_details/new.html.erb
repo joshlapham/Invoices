@@ -9,29 +9,8 @@
 	<h3>Add Payment Details</h3>
 
 	<%= form_for(:payment_detail, :url => {:controller => 'payment_details', :action => 'create'}) do |t| %>
-		
-		<table class="table table-bordered table-condensed table-striped">
-      <tr>
-        <th>Name</th>
-        <td><%= t.text_field(:name_for_invoice) %></td>
-      </tr>
-      <tr>
-        <th>Email</th>
-        <td><%= t.text_field(:email_for_invoice) %></td>
-      </tr>
-			<tr>
-				<th>BSB Number</th>
-				<td><%= t.text_field(:bsb_number) %></td>
-			</tr>
-			<tr>
-				<th>Account Number</th>
-				<td><%= t.text_field(:account_number) %></td>
-			</tr>
-			<tr>
-				<th>ABN Number</th>
-				<td><%= t.text_field(:abn_number) %></td>
-			</tr>
-		</table>
+
+    <%= render "form", t: t %>
 
 		<%= submit_tag("Create Payment Details", :class => "btn btn-success") %>
 
