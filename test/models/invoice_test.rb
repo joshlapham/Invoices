@@ -15,10 +15,14 @@ class InvoiceTest < ActiveSupport::TestCase
     @invoice = Invoice.new
     @invoice.should_charge_gst = true
     @invoice.save
+    
+    # 120 * 3 = 360
+    # 25% of 360 is 90
+    # 360 - 90 = 270
+    # GST amount should be 27.0 (10% of 270)
     @invoice.items.create(description: "Test item", unit_cost: 120.0, quantity: 3.0, discount: 25.0)
 
-    # TODO: [2020] Actual is `27` -- what should it be? subtotal would be 360, so discount amount would be 90.00
-    assert_equal 90.0, @invoice.calculate_gst_amount, "calculate_gst_amount method failed to return expected value"
+    assert_equal 27.0, @invoice.calculate_gst_amount, "calculate_gst_amount method failed to return expected value"
   end
 
   test "should correctly calculate GST amount of an invoice based on invoice items when no discount applied" do
