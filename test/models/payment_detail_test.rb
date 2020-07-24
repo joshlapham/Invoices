@@ -29,4 +29,18 @@ class PaymentDetailTest < ActiveSupport::TestCase
     details.account_number = 123456
     assert_not details.save, "Saved PaymentDetail when 'bsb_number' was a string"
   end
+
+  test "should correctly format 'abn_number'" do
+    details = PaymentDetail.new
+    details.bsb_number = 123456
+    details.account_number = 123456
+
+    # NOTE: 11 digits for AU ABN number
+    # TODO: [2020] If AU ABN number, then should ensure that only 11 digits can be entered
+    details.abn_number = 12345678910
+
+    assert_instance_of String, details.abn_number_formatted, "'abn_number_formatted' returned incorrect class type"
+    assert_equal details.abn_number_formatted, "12 345 678 910", "'abn_number_formatted' returned incorrect formatting"
+  end
+
 end
