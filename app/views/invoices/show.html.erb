@@ -28,7 +28,7 @@
       </tr>
       <tr>
         <th>Amount Due</th>
-        <td><%= number_to_currency(@invoice.amount) %></td>
+        <td><%= number_to_currency(@invoice.calculate_subtotal) %></td>
       </tr>
       <tr>
         <th>Status</th>
