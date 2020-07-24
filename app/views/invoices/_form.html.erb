@@ -1,0 +1,26 @@
+<table class="table table-bordered table-condensed table-striped">
+  <tr>
+    <th>Invoice #</th>
+    <td><%= t.text_field(:invoice_number) %></td>
+  </tr>
+  <tr>
+    <th>Client</th>
+    <td><%= t.collection_select(:client_id, current_user.clients, :id, :name) %></td>
+  </tr>
+  <tr>
+    <th>Invoice Date</th>
+    <td><%= t.text_field(:date_sent) %></td>
+  </tr>
+  <tr>
+    <th>Due Date</th>
+    <td><%= t.text_field(:date_due) %></td>
+  </tr>
+  <tr>
+    <th>Status</th>
+    <td><%= t.select :status, [['Draft', 'draft'], ['Sent', 'sent'], ['Paid', 'paid']] %></td>
+  </tr>
+  <tr>
+    <th>Should Charge GST?</th>
+    <td><%= t.check_box(:should_charge_gst) %></td>
+  </tr>
+</table>
