@@ -17,7 +17,7 @@
   </tr>
   <tr>
     <th>Status</th>
-    <td><%= t.select :status, [['Draft', 'draft'], ['Sent', 'sent'], ['Paid', 'paid']] %></td>
+    <td><%= t.select :status, [%w[Draft draft], %w[Sent sent], %w[Paid paid]] %></td>
   </tr>
   <tr>
     <th>Should Charge GST?</th>
