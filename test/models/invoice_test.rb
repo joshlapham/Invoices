@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class InvoiceTest < ActiveSupport::TestCase
+  # TODO: [feature/invoice-gst-toggle] Write more tests around `should_charge_gst` property on `Invoice` class
+  
   test "should correctly calculate subtotal of an invoice based on invoice items" do
     @invoice = Invoice.new
     @invoice.save
@@ -11,6 +13,7 @@ class InvoiceTest < ActiveSupport::TestCase
 
   test "should correctly calculate GST amount of an invoice based on invoice items when discount applied" do
     @invoice = Invoice.new
+    @invoice.should_charge_gst = true
     @invoice.save
     @invoice.items.create(description: "Test item", unit_cost: 120.0, quantity: 3.0, discount: 25.0)
 
@@ -20,6 +23,7 @@ class InvoiceTest < ActiveSupport::TestCase
 
   test "should correctly calculate GST amount of an invoice based on invoice items when no discount applied" do
     @invoice = Invoice.new
+    @invoice.should_charge_gst = true
     @invoice.save
     @invoice.items.create(description: "Test item 1", unit_cost: 120.0, quantity: 3.0)
     @invoice.items.create(description: "Test item 2", unit_cost: 120.0, quantity: 3.0)
