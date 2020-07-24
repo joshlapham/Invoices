@@ -150,19 +150,11 @@
 		<table class="table table-bordered table-condensed table-striped">
 			<tr>
 				<th>Name</th>
-				<th>Email</th>
-				<th>Phone</th>
-				<th>Address</th>
-				<th>Company</th>
 				<th>Actions</th>
 			</tr>
 			<% @clients.each do |client| %>
 				<tr>
 					<td><%= link_to(client.name, {:controller => "clients", :action => "show", :id => client.id}) %></td>
-					<td><a href="mailto:<%= client.email %>"><%= client.email %></a></td>
-					<td><%= client.phone %></td>
-					<td><%= client.address %></td>
-					<td><%= client.company %></td>
 					<td class="actions">
 						<%= link_to("Show", {:controller => "clients", :action => "show", :id => client.id}, :class => "btn btn-light") %>
 						<%= link_to("Edit", {:controller => "clients", :action => "edit", :id => client.id}, :class => "btn btn-light") %>
