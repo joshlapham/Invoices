@@ -19,7 +19,6 @@ gem 'coffee-rails', '5.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails', '4.4.0'
-gem 'jquery-ui-rails', '6.0.1'
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '1.1.0', group: :doc
