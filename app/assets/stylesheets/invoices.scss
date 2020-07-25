@@ -2,6 +2,7 @@
 // They will automatically be included in application.scss.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// `show.html.erb`
 #add-new-invoice {
   margin-top: 1.2em;
 }
@@ -14,7 +15,7 @@
   margin-top: 1.2em;
 }
 
-/* For Invoice PDF output */
+// For Invoice PDF output (`show.pdf.erb`)
 #pdf-invoice-number {
   text-align: right;
 }
@@ -36,42 +37,17 @@
   // font-size: 3em;
 }
 
-#pdf-biller-details h1 {
-  font-size: 1.5em;
-}
-
-#pdf-biller-details h2 {
-  font-size: 1.2em;
-}
-
 #pdf-payment-options {
   text-align: right;
   padding-top: 2%;
   // font-size: 3em;
 }
 
-.payment-details {
-  font-size: 1.5em;
-}
-
-/*
-h1 {
-	font-size: 7em;
-}
-
-h2 {
-	font-size: 6em;
-}
-
-h3 {
-	font-size: 5em;
-}
-
-h4 {
-	font-size: 4em;
-}
-*/
-
 .pdf-invoice-details-table {
   text-align: right;
+}
+
+// TODO: [2020] This is valid for show.pdf.erb; rename for clarity -- or does this affect both PDF and non-PDF show.erb pages?
+.payment-details {
+  font-size: 1.5em;
 }
