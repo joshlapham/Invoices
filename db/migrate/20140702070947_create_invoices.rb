@@ -3,6 +3,7 @@ class CreateInvoices < ActiveRecord::Migration
   def up
     create_table :invoices do |t|
       t.string :invoice_number
+      # TODO: [2020] Remove `amount` property; rely on calculation of invoice items instead
       t.float :amount
       t.string :date_sent
       t.string :date_due

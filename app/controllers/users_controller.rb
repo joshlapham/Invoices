@@ -60,6 +60,7 @@ class UsersController < ApplicationController
     @paid_invoices = []
 
     current_user.clients.each do |client|
+      # TODO: [2020] Refactor this logic to a method on Client class
       client.invoices.each do |invoice|
         #invoice += @invoices
 
