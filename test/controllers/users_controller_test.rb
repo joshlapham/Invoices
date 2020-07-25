@@ -16,4 +16,15 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_equal flash[:notice], "You are now logged in"
     assert_redirected_to '/'
   end
+
+  test "should redirect to login page on unsuccessful login" do
+    test_user = users(:testuser)
+    password = "incorrectpassword123"
+    post '/attempt_login', params: { email: test_user.email, password: password }
+    assert_equal @controller.action_name, "attempt_login"
+    assert_nil session[:user_id]
+    assert_nil session[:email]
+    assert_equal flash[:notice], "Invalid username or password"
+    assert_redirected_to '/login'
+  end
 end
