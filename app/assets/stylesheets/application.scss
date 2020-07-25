@@ -15,9 +15,10 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 
-// Import other project SASS files
+// Import other project Sass files
 @import "invoices";
 @import "clients";
+@import "payment_details";
 
 /*
 Header
