@@ -5,6 +5,9 @@ gem 'rails', '5.2.4.3'
 
 gem 'sprockets-rails', '2.3.3'
 
+# Twitter Bootstrap
+gem 'bootstrap', '4.2.1'
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '1.4.2'
 
