@@ -16,35 +16,50 @@
 }
 
 // For Invoice PDF output (`show.pdf.erb`)
+// Generic align styling for individual `th` and `td` elements in HTML `table`
+.pdf-invoice-table-left-align {
+  text-align: left;
+}
+
+.pdf-invoice-table-right-align {
+  text-align: right;
+}
+
+// e.g. Tax Invoice #
 #pdf-invoice-number {
   text-align: right;
 }
 
+// e.g. Bill To, Invoice Date, Due Date
 #pdf-invoice-details {
   font-size: 1.2em;
-  text-align: right;
   padding-top: 2%;
 }
 
+.pdf-invoice-details-table {
+  text-align: left;
+}
+
+// e.g. Company - Email - ABN
+#pdf-biller-details {
+  text-align: right;
+  padding-top: 1%;
+}
+
+// e.g. Description, Qty, Unit Price, GST, Total
 #pdf-invoice-items {
   font-size: 1.2em;
   padding-top: 2%;
 }
 
-#pdf-biller-details {
+.pdf-invoice-items-table {
   text-align: right;
-  padding-top: 1%;
-  // font-size: 3em;
 }
 
+// e.g. Payment Options, Bank Deposit, etc
 #pdf-payment-options {
   text-align: right;
   padding-top: 2%;
-  // font-size: 3em;
-}
-
-.pdf-invoice-details-table {
-  text-align: right;
 }
 
 // TODO: [2020] This is valid for show.pdf.erb; rename for clarity -- or does this affect both PDF and non-PDF show.erb pages?
