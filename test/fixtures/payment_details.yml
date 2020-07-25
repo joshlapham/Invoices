@@ -1,0 +1,7 @@
+testpaymentdetails:
+  user: testuser
+  bsb_number: 123456
+  account_number: 12345678
+  abn_number: 12345678910
+  name_for_invoice: John Smith
+  email_for_invoice: john@smith.com
