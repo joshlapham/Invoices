@@ -2,6 +2,10 @@
 // They will automatically be included in application.scss.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#add-new-invoice {
+  margin-top: 1.2em;
+}
+
 /* For Invoice PDF output */
 #pdf-invoice-number {
   text-align: right;
