@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
   def attempt_login
     if params[:email].present? && params[:password].present?
       found_user = User.where(:email => params[:email]).first
+
       if found_user
         authorized_user = found_user.authenticate(params[:password])
       end
@@ -17,12 +18,12 @@ class SessionsController < ApplicationController
       # Mark user as logged in
       session[:user_id] = authorized_user.id
       session[:email] = authorized_user.email
-
       flash[:notice] = "You are now logged in"
-      # Redirect to User index
+
       redirect_to(:controller => 'users', :action => 'index')
     else
       flash[:notice] = "Invalid username or password"
+
       redirect_to(:action => 'login')
     end
   end
@@ -31,8 +32,8 @@ class SessionsController < ApplicationController
     # Mark user as logged out
     session[:user_id] = nil
     session[:email] = nil
-
     flash[:notice] = "Logged out"
+
     redirect_to(:action => 'login')
   end
 
