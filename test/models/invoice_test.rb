@@ -15,7 +15,7 @@ class InvoiceTest < ActiveSupport::TestCase
     @invoice = Invoice.new
     @invoice.should_charge_gst = true
     @invoice.save
-    
+
     # 120 * 3 = 360
     # 25% of 360 is 90
     # 360 - 90 = 270
