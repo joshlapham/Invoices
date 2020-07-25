@@ -1,0 +1,7 @@
+testinvoice:
+  invoice_number: INV-123
+  date_sent: 2015-10-05
+  date_due: 2015-10-21
+  status: sent
+  should_charge_gst: false
+  client: testclient

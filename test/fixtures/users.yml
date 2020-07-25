@@ -1,0 +1,6 @@
+#password: password123
+testuser:
+  email: test@user.com
+  password_digest: $2a$12$P6ygD.rNitO9lfisQ1IPUejyQk1qqg0A6ZATugzuD7kAUG8D7hTBK
+  is_admin: true
+  activated: true

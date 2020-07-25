@@ -1,0 +1,7 @@
+testclient:
+  name: Test Client
+  email: test@client.com
+  phone: 123456789
+  address: 123 Smith St
+  company: Acme, Inc
+  user: testuser
