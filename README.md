@@ -24,6 +24,19 @@ __NOTE__ - Be sure to update the value for `secret_key_base` in `config/secrets.
 4. (First run) Setup database: `bundle exec rake db:migrate`
 5. Start app: `bundle exec rails server`
 
+### Creating Initial Admin User
+
+Use `rails console` to create a new user:
+
+```ruby
+new_user = User.new
+new_user.email = "test@user.com"
+new_user.password = "password123"
+new_user.is_admin = true
+new_user.activated = true
+new_user.save
+```
+
 ### Running in Production
 
 TODO
