@@ -41,4 +41,12 @@ class InvoicesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_equal @controller.action_name, 'new'
   end
+
+  test 'should successfully update an Invoice if logged-in' do
+    flunk
+  end
+
+  test 'should successfully delete an Invoice if logged-in' do
+    flunk
+  end
 end
