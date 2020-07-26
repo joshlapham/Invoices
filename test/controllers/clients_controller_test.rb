@@ -61,14 +61,13 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
           }
     end
 
-    # TODO: Should redirect to here in app, rather than `root_path`
-    # assert_redirected_to client_path(Client.last)
-    assert_redirected_to root_path
+    assert_redirected_to client_path(Client.last)
 
     follow_redirect!
 
     assert_equal flash[:notice], 'Client saved successfully'
 
+    # Ensure `Client` object properties match test data values
     assert_equal Client.last.name, test_name
     assert_equal Client.last.email, test_email
     assert_equal Client.last.company, test_company

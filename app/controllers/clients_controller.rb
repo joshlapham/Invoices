@@ -15,7 +15,7 @@ class ClientsController < ApplicationController
 
     if @client.save
       flash[:notice] = 'Client saved successfully'
-      redirect_to(controller: 'users', action: 'index')
+      redirect_to @client
     else
       render('new')
     end
