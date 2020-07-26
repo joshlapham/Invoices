@@ -1,24 +1,25 @@
 require 'test_helper'
+require 'faker'
 
 class PaymentDetailTest < ActiveSupport::TestCase
   test "should not save without 'bsb_number'" do
     details = PaymentDetail.new
-    details.account_number = 123456
+    details.account_number = Faker::Bank.unique.account_number(digits: 8)
     details.abn_number = 123456
     assert_not details.save, "Saved PaymentDetail without 'bsb_number'"
   end
 
   test "should not save without 'account_number'" do
     details = PaymentDetail.new
-    details.bsb_number = 123456
+    details.bsb_number = Faker::Bank.unique.account_number(digits: 6)
     details.abn_number = 123456
     assert_not details.save, "Saved PaymentDetail without 'account_number'"
   end
 
   test "should not save without 'abn_number'" do
     details = PaymentDetail.new
-    details.account_number = 123456
-    details.bsb_number = 123456
+    details.account_number = Faker::Bank.unique.account_number(digits: 8)
+    details.bsb_number = Faker::Bank.unique.account_number(digits: 6)
     assert_not details.save, "Saved PaymentDetail without 'abn_number'"
   end
 
@@ -26,14 +27,14 @@ class PaymentDetailTest < ActiveSupport::TestCase
     details = PaymentDetail.new
     details.bsb_number = 'this should fail'
     details.abn_number = 123456
-    details.account_number = 123456
+    details.account_number = Faker::Bank.unique.account_number(digits: 8)
     assert_not details.save, "Saved PaymentDetail when 'bsb_number' was a string"
   end
 
   test "should correctly format 'abn_number'" do
     details = PaymentDetail.new
-    details.bsb_number = 123456
-    details.account_number = 123456
+    details.bsb_number = Faker::Bank.unique.account_number(digits: 6)
+    details.account_number = Faker::Bank.unique.account_number(digits: 8)
 
     # NOTE: 11 digits for AU ABN number
     # TODO: [2020] If AU ABN number, then should ensure that only 11 digits can be entered
@@ -52,7 +53,7 @@ class PaymentDetailTest < ActiveSupport::TestCase
 
     # Note: 8 digit account number for AU
     # TODO: [2020] Enforce this if AU
-    details.account_number = 12345678
+    details.account_number = Faker::Bank.unique.account_number(digits: 8)
 
     # NOTE: 11 digits for AU ABN number
     details.abn_number = 12345678910
@@ -65,7 +66,7 @@ class PaymentDetailTest < ActiveSupport::TestCase
     details = PaymentDetail.new
 
     # Note: 6 digit BSB number for AU
-    details.bsb_number = 123456
+    details.bsb_number = Faker::Bank.unique.account_number(digits: 6)
 
     # Note: 8 digit account number for AU
     details.account_number = 12345678
