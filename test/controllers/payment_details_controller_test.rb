@@ -41,4 +41,12 @@ class PaymentDetailsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_equal @controller.action_name, 'new'
   end
+
+  test 'should successfully update a PaymentDetail if logged-in' do
+    flunk
+  end
+
+  test 'should successfully delete a PaymentDetail if logged-in' do
+    flunk
+  end
 end
