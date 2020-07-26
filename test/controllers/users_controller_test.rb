@@ -4,6 +4,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   test 'should redirect to /login if not logged-in and accessing root URL' do
     get root_url
     assert_redirected_to '/login'
+    follow_redirect!
+    assert_select 'h4', 'Login'
   end
 
   test 'should redirect to main page on successful login' do
