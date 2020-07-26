@@ -17,5 +17,6 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
 
     get client_url(test_client)
     assert_response :success
+    assert_equal @controller.action_name, 'show'
   end
 end

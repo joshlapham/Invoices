@@ -17,5 +17,6 @@ class InvoicesControllerTest < ActionDispatch::IntegrationTest
 
     get invoice_url(test_invoice)
     assert_response :success
+    assert_equal @controller.action_name, 'show'
   end
 end

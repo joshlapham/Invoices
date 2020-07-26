@@ -17,5 +17,6 @@ class PaymentDetailsControllerTest < ActionDispatch::IntegrationTest
 
     get payment_detail_url(test_payment_detail)
     assert_response :success
+    assert_equal @controller.action_name, 'show'
   end
 end
