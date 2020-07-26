@@ -31,4 +31,14 @@ class InvoicesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_equal @controller.action_name, 'edit'
   end
+
+  test "should navigate to Invoice '/new' endpoint if logged-in" do
+    test_user = users(:testuser)
+    test_password = 'password123'
+    do_log_in(test_user, test_password)
+
+    get new_invoice_url
+    assert_response :success
+    assert_equal @controller.action_name, 'new'
+  end
 end
