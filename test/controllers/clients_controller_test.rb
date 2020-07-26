@@ -19,4 +19,16 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_equal @controller.action_name, 'show'
   end
+
+  test 'should edit Client if logged-in' do
+    test_user = users(:testuser)
+    test_password = 'password123'
+    do_log_in(test_user, test_password)
+
+    test_client = clients(:testclient)
+
+    get edit_client_url(test_client)
+    assert_response :success
+    assert_equal @controller.action_name, 'edit'
+  end
 end
