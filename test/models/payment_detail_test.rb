@@ -24,7 +24,7 @@ class PaymentDetailTest < ActiveSupport::TestCase
 
   test "should not save if 'bsb_number' is a string" do
     details = PaymentDetail.new
-    details.bsb_number = "this should fail"
+    details.bsb_number = 'this should fail'
     details.abn_number = 123456
     details.account_number = 123456
     assert_not details.save, "Saved PaymentDetail when 'bsb_number' was a string"
@@ -40,7 +40,7 @@ class PaymentDetailTest < ActiveSupport::TestCase
     details.abn_number = 12345678910
 
     assert_instance_of String, details.abn_number_formatted, "'abn_number_formatted' returned incorrect class type"
-    assert_equal details.abn_number_formatted, "12 345 678 910", "'abn_number_formatted' returned incorrect formatting"
+    assert_equal details.abn_number_formatted, '12 345 678 910', "'abn_number_formatted' returned incorrect formatting"
   end
 
   test "should correctly format 'bsb_number'" do
@@ -58,7 +58,7 @@ class PaymentDetailTest < ActiveSupport::TestCase
     details.abn_number = 12345678910
 
     assert_instance_of String, details.bsb_number_formatted, "'bsb_number_formatted' returned incorrect class type"
-    assert_equal details.bsb_number_formatted, "123 456", "'bsb_number_formatted' returned incorrect formatting"
+    assert_equal details.bsb_number_formatted, '123 456', "'bsb_number_formatted' returned incorrect formatting"
   end
 
   test "should correctly format 'account_number'" do
@@ -74,7 +74,7 @@ class PaymentDetailTest < ActiveSupport::TestCase
     details.abn_number = 12345678910
 
     assert_instance_of String, details.account_number_formatted, "'account_number_formatted' returned incorrect class type"
-    assert_equal details.account_number_formatted, "12 345 678", "'account_number_formatted' returned incorrect formatting"
+    assert_equal details.account_number_formatted, '12 345 678', "'account_number_formatted' returned incorrect formatting"
   end
 
 end
