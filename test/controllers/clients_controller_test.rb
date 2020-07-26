@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'faker'
 
 class ClientsControllerTest < ActionDispatch::IntegrationTest
   test "should redirect to /login if not logged-in and accessing '/new' endpoint" do
@@ -40,5 +41,38 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
     get new_client_url
     assert_response :success
     assert_equal @controller.action_name, 'new'
+  end
+
+  test 'should successfully create a new Client if logged-in' do
+    test_user = users(:testuser)
+    test_password = 'password123'
+    do_log_in(test_user, test_password)
+
+    test_name = Faker::Name.unique.name
+    test_company = Faker::Company.unique.name
+    test_email = Faker::Internet.unique.email
+    test_phone = Faker::PhoneNumber.unique.cell_phone_in_e164
+    test_address = Faker::Address.unique.full_address
+
+    assert_difference('Client.count') do
+      post clients_url, params:
+          {
+            client: { name: test_name, company: test_company, email: test_email, phone: test_phone, address: test_address }
+          }
+    end
+
+    # TODO: Should redirect to here in app, rather than `root_path`
+    # assert_redirected_to client_path(Client.last)
+    assert_redirected_to root_path
+
+    follow_redirect!
+
+    assert_equal flash[:notice], 'Client saved successfully'
+
+    assert_equal Client.last.name, test_name
+    assert_equal Client.last.email, test_email
+    assert_equal Client.last.company, test_company
+    assert_equal Client.last.phone, test_phone
+    assert_equal Client.last.address, test_address
   end
 end
