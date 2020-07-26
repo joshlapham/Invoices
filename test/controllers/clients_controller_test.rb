@@ -74,4 +74,22 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
     assert_equal Client.last.phone, test_phone
     assert_equal Client.last.address, test_address
   end
+
+  test 'should successfully update a Client if logged-in' do
+    flunk
+
+    assert_redirected_to client_path(Client.last)
+    follow_redirect!
+    assert_equal flash[:notice], 'Client updated successfully'
+  end
+
+  test 'should successfully delete a Client if logged-in' do
+    flunk
+
+    test_client = clients(:testclient)
+
+    assert_redirected_to root_url
+    follow_redirect!
+    assert_equal flash[:notice], "Client '#{test_client.name}' deleted"
+  end
 end
