@@ -36,6 +36,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'simplecov', '0.18.5'
   gem 'faker', '2.13.0'
 end
 
