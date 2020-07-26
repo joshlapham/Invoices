@@ -7,17 +7,16 @@ class Client < ActiveRecord::Base
 
   validates :name, presence: true
 
-  # TODO: [2020] Implement these methods; write tests first! -- see `users_controller` TODO
-  # def draft_invoices
-  #
-  # end
-  #
-  # def sent_invoices
-  #
-  # end
-  #
-  # def paid_invoices
-  #
-  # end
+  def draft_invoices
+    self.invoices.each.select { |invoice| invoice.status == 'draft' }
+  end
+
+  def sent_invoices
+    self.invoices.each.select { |invoice| invoice.status == 'sent' }
+  end
+
+  def paid_invoices
+    self.invoices.each.select { |invoice| invoice.status == 'paid' }
+  end
   
 end
