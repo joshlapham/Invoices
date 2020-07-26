@@ -7,4 +7,15 @@ class InvoicesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to '/login'
     assert_equal flash[:notice], "Please log in"
   end
+
+  test 'should show Invoice if logged-in' do
+    test_user = users(:testuser)
+    test_password = 'password123'
+    do_log_in(test_user, test_password)
+
+    test_invoice = invoices(:testinvoice_draft)
+
+    get invoice_url(test_invoice)
+    assert_response :success
+  end
 end
